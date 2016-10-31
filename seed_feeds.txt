@@ -28,5 +28,7 @@ https://rails-weekly.ongoodbits.com/feed
 http://bundler.io/blog/feed.xml
 http://blog.rubygems.org/atom.xml
 
+https://rubytogether.org/news.xml
+
 # All content behind paywall, nope
 # https://www.rubytapas.com/feed/
