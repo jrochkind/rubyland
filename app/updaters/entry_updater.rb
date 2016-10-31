@@ -13,9 +13,29 @@ class EntryUpdater
     db_entry.url = feedjira_entry.url.try(:scrub)
     db_entry.prepared_body = prepare_body(feedjira_entry)
 
-    db_entry.datetime = feedjira_entry.published || db_entry.datetime || feedjira_entry.last_modified || Time.now
+    db_entry.datetime = get_datetime(feedjira_entry, cached: db_entry.datetime)
 
     db_entry.save!
+  end
+
+  def get_datetime(feedjira_entry, cached: nil)
+    # prefer `published`, if we have one update it if it changes. Otherwise, use last_modified
+    # or Now, but cache first one forever.
+    datetime = feedjira_entry.published || cached || feedjira_entry.last_modified
+
+    # Still don't have it? Stupid workaround for rubytogether's lack of date but embedding it
+    # in id, gah.
+    if datetime.nil? && feedjira_entry.entry_id =~ /(\d\d\d\d)-(\d\d)-(\d\d)/
+      year, month, date = $1.to_i, $2.to_i, $3.to_i
+      if (2015..2100).cover?(year) && (1..12).cover?(month) && (1..31).cover?(date)
+        datetime = Date.new(year, month, date)
+      end
+    end
+
+    # last resort
+    datetime ||= Time.now
+
+    return datetime
   end
 
   def prepare_body(feedjira_entry)
