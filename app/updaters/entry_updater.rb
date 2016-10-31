@@ -10,12 +10,26 @@ class EntryUpdater
     db_entry = Entry.find_or_initialize_by(feed: db_feed, entry_id: feedjira_entry.entry_id)
 
     db_entry.title = feedjira_entry.title.try(:scrub)
-    db_entry.url = feedjira_entry.url.try(:scrub)
+    db_entry.url = get_url(feedjira_entry)
     db_entry.prepared_body = prepare_body(feedjira_entry)
 
     db_entry.datetime = get_datetime(feedjira_entry, cached: db_entry.datetime)
 
     db_entry.save!
+  end
+
+  protected
+
+  def get_url(feedjira_entry)
+    url = feedjira_entry.url.try(:scrub)
+
+    # some feeds use relative urls! so wrong ruby together.
+    parsed = Addressable::URI.parse(url)
+    if parsed.host.blank?
+      url = Addressable::URI.parse(db_feed.feed_url) + parsed
+    end
+
+    return url
   end
 
   def get_datetime(feedjira_entry, cached: nil)
