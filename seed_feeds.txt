@@ -29,6 +29,7 @@ http://bundler.io/blog/feed.xml
 http://blog.rubygems.org/atom.xml
 
 https://rubytogether.org/news.xml
+https://simplecast.com/podcasts/2316/rss
 
 # All content behind paywall, nope
 # https://www.rubytapas.com/feed/
