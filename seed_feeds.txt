@@ -30,6 +30,15 @@ http://blog.rubygems.org/atom.xml
 
 https://rubytogether.org/news.xml
 https://simplecast.com/podcasts/2316/rss
+# http://rubyplus.libsyn.com/rss
+
+https://rossta.net/feed.xml
+http://blog.iempire.ru/atom.xml
+http://blog.nrowegt.com/rss.xml
+http://craftingruby.com/feed.xml
+http://blog.bigbinary.com/feed.xml
+
+http://www.railscarma.com/feed/
 
 # All content behind paywall, nope
 # https://www.rubytapas.com/feed/
