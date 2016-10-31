@@ -29,10 +29,12 @@ class BodyScrubber
 
   def initial_content
     # summary sounds nice, but too many feeds have lame one sentance summaries,
-    # prefer content for now. Maybe later more complex heuristics. 
+    # prefer content for now. Maybe later more complex heuristics.
+
+    # No idea why feedjira is missing itunes_summary as a summary.
 
     # This `scrub` is ruby stdlib for removing bad UTF-8 chars
-    (feedjira_entry.content.presence || feedjira_entry.summary).try(:scrub)
+    (feedjira_entry.content.presence || feedjira_entry.summary || feedjira_entry.try(:itunes_summary)).try(:scrub)
   end
 
   def allowed_tags
