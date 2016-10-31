@@ -1,0 +1,16 @@
+- entries.each do |entry|
+  .entry
+    .entry-head
+      h2.entry-title
+        = link_to entry.title, entry.url
+        span.entry-datetime
+          =< time_ago_in_words(entry.datetime.to_date)
+          '
+          ' ago
+      div.entry-source
+        = link_to entry.feed.title, entry.feed.url
+      div.entry-feed-url
+        = link_to entry.feed.feed_url, entry.feed.feed_url
+
+    .entry-body
+      = raw entry.prepared_body
