@@ -11,9 +11,13 @@ namespace :feeds do
     end
   end
 
-  desc "update all feeds"
+  desc "update feeds"
   task :update => :environment do
-    Updater.new.update_all
+    if ENV["FEED_ID"].present?
+      Updater.new.update_feed_ids(ENV["FEED_ID"].split(",").collect(&:to_i))
+    else
+      Updater.new.update_all
+    end
   end
 
 end
