@@ -3,7 +3,7 @@
     .entry-head
       hr
       h2.entry-title
-        = link_to entry.title, entry.url
+        = link_to_if entry.url, entry.title, entry.url
         span.entry-datetime
           =< time_ago_in_words(entry.datetime.to_date)
           '

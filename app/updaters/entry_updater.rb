@@ -22,9 +22,12 @@ class EntryUpdater
 
   def get_url(feedjira_entry)
     url = feedjira_entry.url.try(:scrub)
+    # Some feeds delivery entries actually missing the url
+    return nil unless url
 
     # some feeds use relative urls! so wrong ruby together.
     parsed = Addressable::URI.parse(url)
+
     if parsed.host.blank?
       url = Addressable::URI.parse(db_feed.feed_url) + parsed
     end
