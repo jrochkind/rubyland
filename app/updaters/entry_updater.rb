@@ -19,14 +19,6 @@ class EntryUpdater
   end
 
   def prepare_body(feedjira_entry)
-    content = feedjira_entry.summary.presence || feedjira_entry.content
-    return nil unless content
-
-    content = content.scrub
-    #content = content.sanitize
-    #content = truncate_html(content)
-
-    return content
+    BodyScrubber.new(db_feed, feedjira_entry).prepare
   end
-
 end

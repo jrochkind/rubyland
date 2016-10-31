@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'feedjira', '~> 2.0'
 gem 'slim-rails', '~> 3.0'
-gem 'truncate_html'
+gem 'addressable', '~> 2.4'
 
 require 'rbconfig'
 if RbConfig::CONFIG['target_os'] =~ /darwin(1[0-3])/i
