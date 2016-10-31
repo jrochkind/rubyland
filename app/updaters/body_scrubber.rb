@@ -69,9 +69,9 @@ class BodyScrubber
         node.remove
         Loofah::Scrubber::STOP
       else # remove relative href's
-        href_attr = node.attr("href")
-        if href_attr && ! Addressable::URI.parse(href_attr.to_s).scheme.present?
-          href_attr.remove
+        href = node.attr("href")
+        if href && ! Addressable::URI.parse(href).scheme.present?
+          node.remove_attribute("href")
         end
       end
     end
