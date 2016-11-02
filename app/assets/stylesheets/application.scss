@@ -1,0 +1,133 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ * require_tree .
+ * require_self
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+$font-family-sans-serif: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+
+/*@import url('https://fonts.googleapis.com/css?family=Lato&subset=latin-ext');
+$font-family-sans-serif: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+*/
+@import url('https://fonts.googleapis.com/css?family=PT+Mono');
+$font-family-monospace: 'PT Mono', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+/*@import url('https://fonts.googleapis.com/css?family=Merriweather&subset=latin-ext');
+$font-family-serif: 'Merriweather', Georgia, "Times New Roman", Times, serif;
+*/
+/*$code-bg: #002b36;
+$code-color: #839496;
+pre {
+  color: $code-color;
+  background-color: $code-bg;
+}
+*/// $brand-primary: #44558E;
+
+@import "bootstrap_local";
+
+
+.entries {
+
+}
+
+%main-column {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+%sub-head {
+  text-transform: uppercase;
+  font-size: 90%;
+  letter-spacing: 0.06em;
+}
+
+.entry-head-wrapper {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  background-color: #FDF0D5;
+  padding-top: 0.66em;
+  padding-bottom: 0.66em;
+}
+
+.entry-head {
+  @extend %main-column;
+}
+.entry-title {
+  @extend .h3;
+  font-weight: bold;
+  line-height: 1.2em;
+  margin: 0;
+  padding: 0;
+}
+.entry-pre-header {
+  color: #757575;
+  & a {
+    color: #757575;
+  }
+  text-transform: uppercase;
+  font-size: 90%;
+  letter-spacing: 0.06em;
+}
+.entry-feed-url {
+  color: red;
+}
+.feed-icon {
+  height: 0.8em;
+  width: 0.8em;
+  vertical-align: baseline;
+}
+.entry-datetime {
+  color: #757575;
+  float: right;
+}
+.entry-title {
+  text-transform: capitalize;
+}
+
+pre {
+  background-color: $code-bg;
+  padding: 0.5em 1em 0.5em 1em;
+  border-radius: 5px;
+}
+
+.entry-body {
+  @extend %main-column;
+
+  @extend .clearfix;
+  font-family: $font-family-serif;
+  img {
+    max-width: 100%;
+    max-height: 12rem;
+    margin: 0 1em 1em 0;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  h1, h2, h3 {
+    @extend .h4;
+    font-weight: bold;
+  }
+  h4 { @extend .h5 }
+  h5 { @extend .h6 }
+}
+
+.entry-footer-link {
+  @extend %main-column;
+  @extend %sub-head;
+  margin-top: 0.5em;
+}

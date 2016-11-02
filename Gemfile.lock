@@ -40,6 +40,11 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (7.1.4)
+    autoprefixer-rails (6.5.1.1)
+      execjs
+    bootstrap (4.0.0.alpha5)
+      autoprefixer-rails (>= 6.0.3)
+      sass (>= 3.4.19)
     builder (3.2.2)
     byebug (9.0.6)
     coffee-rails (4.2.1)
@@ -167,6 +172,7 @@ PLATFORMS
 
 DEPENDENCIES
   addressable (~> 2.4)
+  bootstrap (>= 4.0.0.alpha5, < 4.1)
   byebug
   coffee-rails (~> 4.2)
   feedjira (~> 2.0)
