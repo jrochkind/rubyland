@@ -23,18 +23,25 @@ http://feeds.feedburner.com/EverydayRails
 http://tech.bragboy.com/feeds/posts/default
 https://medium.com/feed/@dhh
 
-https://rails-weekly.ongoodbits.com/feed
+# just a copy of the rails blog
+# https://rails-weekly.ongoodbits.com/feed
 
 http://bundler.io/blog/feed.xml
 http://blog.rubygems.org/atom.xml
 
 https://rubytogether.org/news.xml
 https://simplecast.com/podcasts/2316/rss
-# http://rubyplus.libsyn.com/rss
+
+https://twin.github.io/feed.xml
+http://dry-rb.org/feed.xml
+http://www.rubyist.net/~matz/comments.rdf
+http://blog.testdouble.com/index.xml
+http://confreaks.tv/events/railsconf2016.atom
+http://confreaks.tv/events/rubyconf2016.atom
+https://vaneyckt.io/posts/index.xml
 
 https://rossta.net/feed.xml
 http://blog.iempire.ru/atom.xml
-http://blog.nrowegt.com/rss.xml
 http://craftingruby.com/feed.xml
 http://blog.bigbinary.com/feed.xml
 
