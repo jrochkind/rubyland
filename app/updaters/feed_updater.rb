@@ -1,5 +1,8 @@
 
 class FeedUpdater
+  class_attribute :max_fetch_entries
+  self.max_fetch_entries = 100
+
   attr_reader :db_feed, :hard_refresh
 
   # if hard_refresh:true, then do NOT do conditional http get,
@@ -29,7 +32,7 @@ class FeedUpdater
       db_feed.description = feed.description
       db_feed.url = feed.url
 
-      feed.entries.each do |entry|
+      feed.entries.slice(0, max_fetch_entries).each do |entry|
         EntryUpdater.new(db_feed, entry).update
       end
 
