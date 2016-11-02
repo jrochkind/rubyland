@@ -7,9 +7,14 @@ class FeedUpdater
   end
 
   def update
-    feed = Feedjira::Feed.fetch_and_parse feed_url
+    response = HTTP.get(feed_url)
+
+    feed = Feedjira::Feed.parse response.to_s
 
     Feed.transaction do
+      db_feed.http_etag = response["Etag"]
+      db_feed.http_last_modified = response["Last-Modified"]
+
       db_feed.title = feed.title
       db_feed.description = feed.description
       db_feed.url = feed.url
@@ -17,7 +22,6 @@ class FeedUpdater
       feed.entries.each do |entry|
         EntryUpdater.new(db_feed, entry).update
       end
-      db_feed.last_modified = feed.last_modified
 
       db_feed.mark_success
 
@@ -36,6 +40,9 @@ class FeedUpdater
 
   def prepare_body(feedjira_entry)
     santize(content)
+  end
+
+  class BadHttpStatus < StandardError
   end
 
 end
