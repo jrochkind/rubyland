@@ -1,9 +1,13 @@
 
 class FeedUpdater
-  attr_reader :db_feed
-  def initialize(db_feed)
+  attr_reader :db_feed, :hard_refresh
+
+  # if hard_refresh:true, then do NOT do conditional http get,
+  # force a refresh.
+  def initialize(db_feed, hard_refresh: false)
     raise ArgumentError("need a Feed object") unless db_feed.kind_of?(Feed)
     @db_feed = db_feed
+    @hard_refresh = hard_refresh
   end
 
   def update
@@ -16,8 +20,6 @@ class FeedUpdater
     end
 
     feed = Feedjira::Feed.parse response.to_s
-
-
 
     Feed.transaction do
       db_feed.http_etag = response["Etag"]
@@ -56,11 +58,13 @@ class FeedUpdater
       "User-Agent" => "#{HTTP::Request::USER_AGENT} (rubyland aggregator)"
     }
 
-    if db_feed.http_etag
-      headers["If-None-Match"] = db_feed.http_etag
-    end
-    if db_feed.http_last_modified
-      headers['If-Modified-Since'] = db_feed.http_last_modified
+    unless hard_refresh
+      if db_feed.http_etag
+        headers["If-None-Match"] = db_feed.http_etag
+      end
+      if db_feed.http_last_modified
+        headers['If-Modified-Since'] = db_feed.http_last_modified
+      end
     end
 
     HTTP.headers(headers).get(feed_url)
