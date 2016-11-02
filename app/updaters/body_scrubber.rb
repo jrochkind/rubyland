@@ -47,7 +47,7 @@ class BodyScrubber
   end
 
   def allowed_attributes
-    Rails::Html::WhiteListSanitizer.allowed_attributes
+    Rails::Html::WhiteListSanitizer.allowed_attributes - Set.new(["width", "height"])
   end
 
   def rails_permit_scrubber
