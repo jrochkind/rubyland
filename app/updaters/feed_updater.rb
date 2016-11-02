@@ -7,9 +7,17 @@ class FeedUpdater
   end
 
   def update
-    response = HTTP.get(feed_url)
+    response = fetch
+
+    if response.status == 304
+      db_feed.mark_success(:not_modified)
+      db_feed.save!
+      return
+    end
 
     feed = Feedjira::Feed.parse response.to_s
+
+
 
     Feed.transaction do
       db_feed.http_etag = response["Etag"]
@@ -40,6 +48,22 @@ class FeedUpdater
 
   def prepare_body(feedjira_entry)
     santize(content)
+  end
+
+  # Returns a http.rb resposne
+  def fetch
+    headers = {
+      "User-Agent" => "#{HTTP::Request::USER_AGENT} (rubyland aggregator)"
+    }
+
+    if db_feed.http_etag
+      headers["If-None-Match"] = db_feed.http_etag
+    end
+    if db_feed.http_last_modified
+      headers['If-Modified-Since'] = db_feed.http_last_modified
+    end
+
+    HTTP.headers(headers).get(feed_url)
   end
 
   class BadHttpStatus < StandardError

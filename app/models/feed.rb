@@ -13,10 +13,10 @@ class Feed < ApplicationRecord
     last_fetch_ok? || last_fetch_not_modified?
   end
 
-  def mark_success
+  def mark_success(status = :ok)
     # no idea why self is needed here??
     self.last_fetch_at = Time.now
-    self.last_fetch_status = :ok
+    self.last_fetch_status = status
   end
 
   def mark_failed(exception: nil)
