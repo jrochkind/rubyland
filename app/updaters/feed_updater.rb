@@ -17,10 +17,17 @@ class FeedUpdater
       feed.entries.each do |entry|
         EntryUpdater.new(db_feed, entry).update
       end
-
       db_feed.last_modified = feed.last_modified
+
+      db_feed.mark_success
+
       db_feed.save!
     end
+  rescue StandardError => e
+    db_feed.restore_attributes
+    db_feed.mark_failed(exception: e)
+    db_feed.save!
+    return false
   end
 
   def feed_url

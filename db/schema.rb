@@ -33,9 +33,12 @@ ActiveRecord::Schema.define(version: 20161029162740) do
     t.string   "description"
     t.string   "feed_url"
     t.string   "url"
+    t.datetime "last_fetch_at"
+    t.string   "last_fetch_status",     default: "not_yet_attempted"
+    t.json     "last_fetch_error_info"
     t.datetime "last_modified"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
     t.index ["feed_url"], name: "index_feeds_on_feed_url", using: :btree
   end
 
