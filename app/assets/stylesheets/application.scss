@@ -15,14 +15,17 @@
  */
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-$font-family-sans-serif: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-
+//$font-family-sans-serif: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-sub-head: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
 /*@import url('https://fonts.googleapis.com/css?family=Lato&subset=latin-ext');
 $font-family-sans-serif: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 */
 @import url('https://fonts.googleapis.com/css?family=PT+Mono');
 $font-family-monospace: 'PT Mono', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+$font-family-entry: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 
 /*@import url('https://fonts.googleapis.com/css?family=Merriweather&subset=latin-ext');
 $font-family-serif: 'Merriweather', Georgia, "Times New Roman", Times, serif;
@@ -37,51 +40,82 @@ pre {
 
 @import "bootstrap_local";
 
-
-.entries {
-
-}
-
 %main-column {
   max-width: 42rem;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding: 1rem;
 }
 
 %sub-head {
+  font-family: $font-family-sub-head;
   text-transform: uppercase;
   font-size: 90%;
   letter-spacing: 0.06em;
 }
 
-.entry-head-wrapper {
-  margin-top: 2em;
-  margin-bottom: 1em;
+body {
   background-color: #FDF0D5;
-  padding-top: 0.66em;
-  padding-bottom: 0.66em;
+}
+
+.header {
+  @extend .clearfix;
+  @extend %sub-head;
+  padding-left: 2em;
+  padding-right: 2em;
+  color: white;
+
+  margin-bottom: 2rem;
+  background-color: #b71c1c;
+  .header-brand {
+    display: inline-block;
+    float: left;
+  }
+  .header-links {
+    display: inline-block;
+    float: right;
+  }
+}
+
+
+.entries {
+
+}
+
+
+
+
+.entry {
+  @extend %main-column;
+  background-color: white;
+
+  border: 1px solid rgba(0,0,0,.09);
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  border-radius: 3px;
+  margin-bottom: 2rem;
 }
 
 .entry-head {
-  @extend %main-column;
+  margin-bottom: 1rem;
 }
 .entry-title {
-  @extend .h3;
-  font-weight: bold;
-  line-height: 1.2em;
+  @extend .h4;
+  //font-weight: bold;
+  //line-height: 1.2em;
   margin: 0;
   padding: 0;
+  margin-top: 0.3rem;
 }
 .entry-pre-header {
+  font-family: $font-family-sub-head;
+
   color: #757575;
   & a {
     color: #757575;
   }
   text-transform: uppercase;
   font-size: 90%;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.01em;
 }
 .entry-feed-url {
   color: red;
@@ -106,8 +140,6 @@ pre {
 }
 
 .entry-body {
-  @extend %main-column;
-
   @extend .clearfix;
   font-family: $font-family-serif;
   img {
@@ -118,16 +150,27 @@ pre {
     margin-right: auto;
     margin-left: auto;
   }
-  h1, h2, h3 {
-    @extend .h4;
-    font-weight: bold;
+
+  blockquote {
+    @extend .blockquote;
+    font-family: inherit;
+    font-size: 1rem;
   }
-  h4 { @extend .h5 }
-  h5 { @extend .h6 }
+
+  // h1, h2, h3 {
+  //   @extend .h4;
+  //   font-weight: bold;
+  // }
+  // h4 { @extend .h5 }
+  // h5 { @extend .h6 }
 }
 
-.entry-footer-link {
-  @extend %main-column;
+.entry-footer {
+  color: #757575;
+  font-size: 90%;
+  & a {
+    font-weight: normal;
+    color: #757575;
+  }
   @extend %sub-head;
-  margin-top: 0.5em;
 }

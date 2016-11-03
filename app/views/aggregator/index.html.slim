@@ -1,24 +1,23 @@
 .entries
   - entries.each do |entry|
     .entry
-      .entry-head-wrapper
-        .entry-head
-          .entry-pre-header
-            span.entry-datetime
-              =< time_ago_in_words(entry.datetime.to_date)
-              '
-              ' ago
+      .entry-head
+        .entry-pre-header
+          span.entry-datetime
+            =< time_ago_in_words(entry.datetime.to_date)
+            '
+            ' ago
 
-            span.entry-source
-              = link_to_if entry.feed.url, entry.feed.title, entry.feed.url
-            span.entry-feed-url
-              | &nbsp;
-              = link_to image_tag("rss_font_awesome.svg", class: "feed-icon"), entry.feed.feed_url
-          h2.entry-title
-            = link_to_if entry.url, entry.title, entry.url
+          span.entry-source
+            = link_to_if entry.feed.url, entry.feed.title, entry.feed.url
+          span.entry-feed-url
+            | &nbsp;
+            = link_to image_tag("rss_font_awesome.svg", class: "feed-icon"), entry.feed.feed_url
+        h2.entry-title
+          = link_to_if entry.url, entry.title, entry.url
         
       .entry-body
         = raw entry.prepared_body
       - if entry.url
-        p.entry-footer-link
-          = link_to "Read at #{entry.feed.title}", entry.url
+        div.entry-footer
+          = link_to "Read more at #{entry.feed.title}", entry.url
