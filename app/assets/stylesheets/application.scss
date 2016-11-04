@@ -33,6 +33,7 @@ $link-color: $app-red-color;
 @import "bootstrap_local";
 
 @import "app/mixins";
+@import "app/header";
 @import "app/sources";
 
 a:hover, a:focus {
@@ -45,53 +46,6 @@ h1 {
   font-size: 2.2rem;
   letter-spacing: -0.01em;
 }
-
-
-.header {
-  @extend .clearfix;
-  padding-left: 2em;
-  padding-right: 2em;
-  padding-top: 0.2em;
-  color: white;
-
-  margin-bottom: 2rem;
-  background-color: $app-red-color;
-
-  a {
-    color: white;
-    text-decoration: inherit;
-    &:hover, &:focus {
-      color: $link-hover-color;
-    }
-  }
-
-  .header-brand {
-    display: inline-block;
-    float: left;
-    h1 {
-      display: inline;
-      margin-bottom: 0;
-      heading-bottom: 0;
-    }
-    .header-subtitle {
-      // not sure why we need this to get a good lockup
-      margin-top: -0.5rem;
-    }
-  }
-  .header-nav {
-    display: inline-block;
-    float: right;
-    .header-nav-item {
-      @extend %special-head;
-      display: inline-block;
-      padding-top: .425rem;
-      padding-bottom: .425rem;
-      margin-left: 1.5rem;
-    }
-
-  }
-}
-
 
 .entry {
   @extend %main-column;
@@ -189,3 +143,15 @@ code {
     float: right;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+

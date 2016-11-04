@@ -1,0 +1,51 @@
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: center;
+}
+
+$header-spacing: 2em;
+.header {
+  padding-top: 0.2em;
+  padding-left: $header-spacing;
+  color: white;
+
+  margin-bottom: 2rem;
+  background-color: $app-red-color;
+
+  a {
+    color: white;
+    text-decoration: inherit;
+    &:hover, &:focus {
+      color: $link-hover-color;
+    }
+  }
+
+  .header-brand {
+    margin-right: $header-spacing;
+    h1 {
+      display: inline;
+      margin-bottom: 0;
+      heading-bottom: 0;
+    }
+    .header-subtitle {
+      // not sure why we need this to get a good lockup
+      margin-top: -0.5rem;
+    }
+  }
+  .header-nav {
+    margin-right: $header-spacing;
+    .header-nav-item {
+      @extend %special-head;
+      display: inline-block;
+      padding-top: .425rem;
+      padding-bottom: .425rem;
+      margin-left: 1.5rem;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
