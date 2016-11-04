@@ -10,20 +10,19 @@
           span.entry-feed-url
             = link_to entry.feed.feed_url do
               i.fa.fa-rss
-              | &nbsp;
+          '
           span.entry-source
-            = link_to_if entry.feed.url, entry.feed.title, entry.feed.url
+            = link_to entry.feed.title, entry.feed.url || entry.url
         h2.entry-title
           = link_to_if entry.url, entry.title, entry.url
-        
+
       .entry-body
         = raw entry.prepared_body
       - if entry.url
         div.entry-footer
-          = link_to "Read more at #{entry.feed.title}", entry.url
-          - if entry.feed.url
-            .links              
-              a.link-reddit href="https://www.reddit.com/r/ruby/submit?url=#{CGI.escape entry.feed.url}&amp;title=#{CGI.escape entry.title}"
-                i.fa.fa-reddit
-                |  Reddit
+          = link_to "Read more at #{entry.feed.title}", entry.url, class: 'entry-footer-source'
+          .links
+            a.link-reddit href="https://www.reddit.com/r/ruby/submit?url=#{CGI.escape entry.url}&amp;title=#{CGI.escape entry.title}"
+              i.fa.fa-reddit
+              |  Reddit
 

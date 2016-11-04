@@ -17,92 +17,85 @@
 @import "font-awesome";
 
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-//$font-family-sans-serif: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-$font-family-sub-head: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-
-@import url('https://fonts.googleapis.com/css?family=Lato&subset=latin-ext');
-/*$font-family-sans-serif: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-*/
-@import url('https://fonts.googleapis.com/css?family=PT+Mono');
+@import url('https://fonts.googleapis.com/css?family=PT+Mono|Fira+Sans');
 $font-family-monospace: 'PT Mono', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-sans-serif: 'Fira Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-special-head: $font-family-sans-serif;
 
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-$font-family-entry: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-
-@import url('https://fonts.googleapis.com/css?family=Merriweather&subset=latin-ext');
-
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+$app-red-color: #B71C1C;
 
 
-/*font-family-serif: 'Merriweather', Georgia, "Times New Roman", Times, serif;
-*/
-/*$code-bg: #002b36;
-$code-color: #839496;
-pre {
-  color: $code-color;
-  background-color: $code-bg;
-}
-*/// $brand-primary: #44558E;
+$text-muted: #757575;
+$body-bg: #FDF0D5;
 
-$link-color: #B71C1C;
+$link-color: $app-red-color;
 
 @import "bootstrap_local";
 
-%main-column {
-  max-width: 40rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1rem;
+@import "app/mixins";
+@import "app/sources";
+
+a:hover, a:focus {
+  text-decoration: none;
 }
 
-%sub-head {
-  //font-family: $font-family-sub-head;
-  font-family: 'Fira Sans';
+h1 {
+  @extend %special-head;
   text-transform: uppercase;
-  font-size: 90%;
-  letter-spacing: 0.06em;
+  font-size: 2.2rem;
+  letter-spacing: -0.01em;
 }
 
-body {
-  background-color: #FDF0D5;
-}
 
 .header {
   @extend .clearfix;
-  @extend %sub-head;
   padding-left: 2em;
   padding-right: 2em;
+  padding-top: 0.2em;
   color: white;
 
   margin-bottom: 2rem;
-  background-color: #b71c1c;
+  background-color: $app-red-color;
+
+  a {
+    color: white;
+    text-decoration: inherit;
+    &:hover, &:focus {
+      color: $link-hover-color;
+    }
+  }
+
   .header-brand {
     display: inline-block;
     float: left;
+    h1 {
+      display: inline;
+      margin-bottom: 0;
+      heading-bottom: 0;
+    }
+    .header-subtitle {
+      // not sure why we need this to get a good lockup
+      margin-top: -0.5rem;
+    }
   }
-  .header-links {
+  .header-nav {
     display: inline-block;
     float: right;
+    .header-nav-item {
+      @extend %special-head;
+      display: inline-block;
+      padding-top: .425rem;
+      padding-bottom: .425rem;
+      margin-left: 1.5rem;
+    }
+
   }
 }
-
-
-.entries {
-
-}
-
-
 
 
 .entry {
   @extend %main-column;
-  background-color: white;
-
-  border: 1px solid rgba(0,0,0,.09);
-  box-shadow: 0 1px 4px rgba(0,0,0,.04);
-  border-radius: 3px;
-  margin-bottom: 2rem;
+  @extend %card;
 }
 
 .entry-head {
@@ -110,34 +103,30 @@ body {
 }
 .entry-title {
   @extend .h2;
-  font-family: 'Fira Sans';
+  font-family: $font-family-sans-serif;
   margin: 0;
   padding: 0;
   margin-top: 0.33rem;
-  letter-spacing: -0.1rem;
+  letter-spacing: -0.05rem;
+  a {
+    display: block;
+  }
 }
 .entry-pre-header {
-  //font-family: $font-family-sub-head;
-  font-family: 'Fira Sans';
+  @extend %special-head;
 
-  color: #757575;
+  color: $text-muted;
   & a {
-    color: #757575;
+    color: $text-muted;
   }
-  text-transform: uppercase;
-  font-size: 90%;
-  letter-spacing: 0.01em;
 }
-.entry-feed-url {
-  color: red;
-}
+
 .feed-icon {
   height: 0.8em;
   width: 0.8em;
   vertical-align: baseline;
 }
 .entry-datetime {
-  color: #757575;
   float: right;
 }
 
@@ -189,14 +178,13 @@ code {
 }
 
 .entry-footer {
-  color: #757575;
-  font-size: 90%;
+  @extend %special-head;
+
+  color: $text-muted;
   & a {
     font-weight: normal;
-    color: #757575;
+    color: $text-muted;
   }
-  @extend %sub-head;
-
   .links {
     float: right;
   }

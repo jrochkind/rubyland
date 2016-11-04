@@ -1,0 +1,24 @@
+%main-column {
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+%special-head {
+  font-family: $font-family-special-head;
+  text-transform: uppercase;
+  font-size: 90%;
+  letter-spacing: 0.03em;
+}
+
+%card {
+  background-color: white;
+
+  border: 1px solid rgba(0,0,0,.09);
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  border-radius: 3px;
+  margin-bottom: 2rem;
+
+  padding: 1rem;
+}

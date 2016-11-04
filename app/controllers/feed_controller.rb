@@ -1,6 +1,6 @@
 class FeedController < ApplicationController
   def index
-    @feeds = Feed.order(:title).all
+    @feeds = Feed.with_latest_entry.order("UPPER(feeds.title)").all
   end
 
   protected

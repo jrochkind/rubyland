@@ -11,10 +11,16 @@
   <body>
     <div class="header">
       <div class="header-brand">
-        <h2>Rubyland</h2>
+        <h1><%= link_to 'Rubyland', root_url %></h1>
+        <div class="header-subtitle">
+          news, opinion, tutorials about <a href="https://www.ruby-lang.org/en/">ruby</a>, aggregated
+        </div>
       </div>
-      <div class="header-links">
-        SOURCES ABOUT
+      <div class="header-nav">
+        <%= link_to "Sources", sources_path, class: "header-nav-item" %>
+        <a href="#" class="header-nav-item">
+          About
+        </a>
       </div>
     </div>
     <%= yield %>

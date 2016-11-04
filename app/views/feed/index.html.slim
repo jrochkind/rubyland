@@ -1,13 +1,40 @@
-h1 Sources
+.sources
+  h1 
+    | Sources
+  - feeds.each do |feed|
+    .source
+      h2 name="id_#{feed.id}"
+        = link_to_if feed.url, feed.title || "[missing]", feed.url, name: "link_id#{feed.id}"
+      .source-body
+        ul.list-unstyled.links
+          li
+            i.fa.fa-link.link-cell
+            '
+            span.link-cell
+              = link_to_if feed.url, feed.url, feed.url do
+                span.tag.tag-danger missing
+          li
+            i.fa.fa-rss
+            '
+            = link_to feed.feed_url, feed.feed_url
+        h3.subhead Last Fetch
+        .last-fetch-info
+          .last-fetch-info-cell.status
+            span class=class_for_feed_status(feed)
+              = feed.last_fetch_status
+          - if feed.last_fetch_error?
+            .last-fetch-info-cell.exception
+              = feed.last_fetch_error_info.try {|h| h['class_name']}        
+          .last-fetch-info-cell.datetime-ago
+            = time_ago_in_words(feed.last_fetch_at)
+            |  ago
+          .last-fetch-info-cell.datetime
+            = feed.last_fetch_at.to_s
+        -if feed.latest_entry_title
+          h3.subhead Latest Entry
+          .latest-entry
+            .latest-entry-title = link_to_if feed.latest_entry_url, feed.latest_entry_title, feed.latest_entry_url
+            .latest-entry-datetime = l feed.latest_entry_datetime.to_date, format: :long
 
-- feeds.each do |feed|
-  h2 = feed.title || "No title"
-  dl
-    dt Last fetch status
-    dd = feed.last_fetch_status
-    dt Last fetch
-    dd = feed.last_fetch_at
-    dt Last fetch exception
-    dd = feed.last_fetch_error_info.try {|h| h[:class_name]}
-    dt most recent entry
-    dt = feed.entries.maximum(:datetime)
+
+        
