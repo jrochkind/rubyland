@@ -34,7 +34,6 @@ https://simplecast.com/podcasts/2316/rss
 
 https://twin.github.io/feed.xml
 http://dry-rb.org/feed.xml
-http://www.rubyist.net/~matz/comments.rdf
 http://blog.testdouble.com/index.xml
 http://confreaks.tv/events/railsconf2016.atom
 http://confreaks.tv/events/rubyconf2016.atom
@@ -45,7 +44,19 @@ http://blog.iempire.ru/atom.xml
 http://craftingruby.com/feed.xml
 http://blog.bigbinary.com/feed.xml
 
-http://www.railscarma.com/feed/
+http://www.virtuouscode.com/feed/
+
+# matz feed not finding an entry_id, some weird kind of feed.
+http://www.rubyist.net/~matz/comments.rdf
+
+# meh
+# http://www.railscarma.com/feed/
+
+http://www.tomdalling.com/blog/category/ruby/feed/
+
+http://feeds.feedburner.com/solnic-on-blog/
+
+http://feeds.feedburner.com/jonmccartie
 
 # All content behind paywall, nope
 # https://www.rubytapas.com/feed/
