@@ -60,3 +60,6 @@ http://feeds.feedburner.com/jonmccartie
 
 # All content behind paywall, nope
 # https://www.rubytapas.com/feed/
+
+https://blog.blockscore.com/feed.xml
+http://www.alfredo.motta.name/feed/
