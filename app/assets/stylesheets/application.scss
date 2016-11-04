@@ -14,12 +14,15 @@
  * require_self
  */
 
+@import "font-awesome";
+
+
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 //$font-family-sans-serif: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 $font-family-sub-head: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
-/*@import url('https://fonts.googleapis.com/css?family=Lato&subset=latin-ext');
-$font-family-sans-serif: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Lato&subset=latin-ext');
+/*$font-family-sans-serif: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 */
 @import url('https://fonts.googleapis.com/css?family=PT+Mono');
 $font-family-monospace: 'PT Mono', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -27,8 +30,12 @@ $font-family-monospace: 'PT Mono', Menlo, Monaco, Consolas, "Liberation Mono", "
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 $font-family-entry: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 
-/*@import url('https://fonts.googleapis.com/css?family=Merriweather&subset=latin-ext');
-$font-family-serif: 'Merriweather', Georgia, "Times New Roman", Times, serif;
+@import url('https://fonts.googleapis.com/css?family=Merriweather&subset=latin-ext');
+
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+
+
+/*font-family-serif: 'Merriweather', Georgia, "Times New Roman", Times, serif;
 */
 /*$code-bg: #002b36;
 $code-color: #839496;
@@ -38,17 +45,20 @@ pre {
 }
 */// $brand-primary: #44558E;
 
+$link-color: #B71C1C;
+
 @import "bootstrap_local";
 
 %main-column {
-  max-width: 42rem;
+  max-width: 40rem;
   margin-left: auto;
   margin-right: auto;
   padding: 1rem;
 }
 
 %sub-head {
-  font-family: $font-family-sub-head;
+  //font-family: $font-family-sub-head;
+  font-family: 'Fira Sans';
   text-transform: uppercase;
   font-size: 90%;
   letter-spacing: 0.06em;
@@ -99,15 +109,16 @@ body {
   margin-bottom: 1rem;
 }
 .entry-title {
-  @extend .h4;
-  //font-weight: bold;
-  //line-height: 1.2em;
+  @extend .h2;
+  font-family: 'Fira Sans';
   margin: 0;
   padding: 0;
-  margin-top: 0.3rem;
+  margin-top: 0.33rem;
+  letter-spacing: -0.1rem;
 }
 .entry-pre-header {
-  font-family: $font-family-sub-head;
+  //font-family: $font-family-sub-head;
+  font-family: 'Fira Sans';
 
   color: #757575;
   & a {
@@ -129,9 +140,6 @@ body {
   color: #757575;
   float: right;
 }
-.entry-title {
-  text-transform: capitalize;
-}
 
 pre {
   background-color: $code-bg;
@@ -139,9 +147,15 @@ pre {
   border-radius: 5px;
 }
 
+code {
+  color: $body-color;
+}
+
 .entry-body {
   @extend .clearfix;
   font-family: $font-family-serif;
+  //font-family: 'Fira Sans';
+  //font-family: $font-family-sans-serif;
   img {
     max-width: 100%;
     max-height: 12rem;
@@ -151,10 +165,19 @@ pre {
     margin-left: auto;
   }
 
+  & > div {
+    //@extend .p;
+  }
+
   blockquote {
     @extend .blockquote;
     font-family: inherit;
     font-size: 1rem;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fira Sans';
+    letter-spacing: -0.04rem;
   }
 
   // h1, h2, h3 {
@@ -173,4 +196,8 @@ pre {
     color: #757575;
   }
   @extend %sub-head;
+
+  .links {
+    float: right;
+  }
 }
