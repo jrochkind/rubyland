@@ -1,0 +1,13 @@
+h1 Sources
+
+- feeds.each do |feed|
+  h2 = feed.title || "No title"
+  dl
+    dt Last fetch status
+    dd = feed.last_fetch_status
+    dt Last fetch
+    dd = feed.last_fetch_at
+    dt Last fetch exception
+    dd = feed.last_fetch_error_info.try {|h| h[:class_name]}
+    dt most recent entry
+    dt = feed.entries.maximum(:datetime)
