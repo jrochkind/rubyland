@@ -1,5 +1,5 @@
 .sources
-  h1 
+  h1.page-title
     | Sources
   - feeds.each do |feed|
     .source
@@ -33,8 +33,10 @@
         -if feed.latest_entry_title
           h3.subhead Latest Entry
           .latest-entry
-            .latest-entry-title = link_to_if feed.latest_entry_url, feed.latest_entry_title, feed.latest_entry_url
-            .latest-entry-datetime = l feed.latest_entry_datetime.to_date, format: :long
+            span.latest-entry-title
+              = link_to_if feed.latest_entry_url, feed.latest_entry_title, feed.latest_entry_url
+            span.latest-entry-datetime
+              = l feed.latest_entry_datetime.to_date, format: :long
 
 
         
