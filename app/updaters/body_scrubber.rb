@@ -7,12 +7,13 @@
 #        #    want to do other things with the nokogiri, like truncate.
 class BodyScrubber
   class_attribute :truncate_max_length
-  self.truncate_max_length = 1000
+  self.truncate_max_length = 700
 
-  attr_reader :feed, :feedjira_entry
+  attr_reader :base_url, :feedjira_entry
 
-  def initialize(feed, feedjira_entry )
-    @feed, @feedjira_entry = feed, feedjira_entry
+  def initialize(feedjira_entry, base_url: )
+    @base_url, @feedjira_entry = base_url, feedjira_entry
+    @base_url = Addressable::URI.parse(base_url)
   end
 
   def prepare
@@ -23,7 +24,7 @@ class BodyScrubber
 
     loofah_fragment.
       scrub!(rails_permit_scrubber).
-      scrub!(BadUrlScrubber)
+      scrub!(RelativeUrlResolver.new(base_url: base_url))
 
     loofah_fragment = self.class.nokogiri_truncate(loofah_fragment, separator: ' ')
 
@@ -57,34 +58,43 @@ class BodyScrubber
     end
   end
 
-  # Some feeds have img.src and a.href that are relative links, which is
-  # just useless in a feed, they're now relative to us, and wrong.
-  # Remove em with loofah.
+  # Some feeds have img.src and a.href that are relative links, which
+  # need to be resolved to the base url.
   #
-  # This does a few other things too, to be efficient with one loofah pass-through.
-  # Loofah's documented API does not lead to very readable code, sorry...
-  BadUrlScrubber = Loofah::Scrubber.new do |node|
-    if node.name == "img"
-      src = node.attr("src")
-      unless src.present? && Addressable::URI.parse(src).scheme.present?
-        node.remove
-        Loofah::Scrubber::STOP
+  # As long as we're traversing, we also remove 'read more' links.
+  class RelativeUrlResolver < Loofah::Scrubber
+    attr_reader :base_url
+    def initialize(options = {}, &block)
+      super
+      @base_url = Addressable::URI.parse(options.fetch(:base_url))
+    end
+
+    def resolve(url)
+      unless url.present?
+        # let's not touch an empty string or nil, although
+        # I'm not completely sure that's right.
+        return url
       end
-    elsif node.name == "a"
-      # get rid of 'read more' links, we'll provide our own.
-      if node.text.strip.downcase =~ %r{\Aread more\.*…*\z}
-        node.remove
-        Loofah::Scrubber::STOP
-      else # remove relative href's
-        href = node.attr("href")
-        if href && ! Addressable::URI.parse(href).scheme.present?
-          node.remove_attribute("href")
+
+      base_url.join Addressable::URI.parse(url)
+    end
+
+    def scrub(node)
+      if node.name == "img"
+        node['src'] = resolve(node['src'])
+      elsif node.name == "a"
+        # get rid of 'read more' links, we'll provide our own.
+        if node.text.strip.downcase =~ %r{\Aread more\.*…*\z}
+          node.remove
+          return Loofah::Scrubber::STOP
         end
+
+        node['href'] = resolve(node['href'])
+
       end
     end
   end
 
-  require 'nokogiri'
 
 
   # https://gist.github.com/jrochkind/3893745

@@ -11,7 +11,7 @@ class EntryUpdater
 
     db_entry.title = feedjira_entry.title.try(:scrub)
     db_entry.url = get_url(feedjira_entry)
-    db_entry.prepared_body = prepare_body(feedjira_entry)
+    db_entry.prepared_body = prepare_body(feedjira_entry, base_url: db_entry.url)
 
     db_entry.datetime = get_datetime(feedjira_entry, cached: db_entry.datetime)
 
@@ -55,7 +55,7 @@ class EntryUpdater
     return datetime
   end
 
-  def prepare_body(feedjira_entry)
-    BodyScrubber.new(db_feed, feedjira_entry).prepare
+  def prepare_body(feedjira_entry, base_url: )
+    BodyScrubber.new(feedjira_entry, base_url: base_url).prepare
   end
 end
