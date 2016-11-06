@@ -9,7 +9,7 @@
   font-family: $font-family-special-head;
   text-transform: uppercase;
   font-size: 90%;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.03em;  
 }
 
 %card {
@@ -20,5 +20,7 @@
   border-radius: 3px;
   margin-bottom: 1.5rem;
 
-  padding: 0.5rem 1rem;
+  padding: 0.66rem 1rem;
+
+  overflow: hidden;
 }

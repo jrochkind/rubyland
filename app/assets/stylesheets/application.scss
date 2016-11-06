@@ -18,9 +18,14 @@
 
 
 @import url('https://fonts.googleapis.com/css?family=PT+Mono|Fira+Sans');
-$font-family-monospace: 'PT Mono', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 $font-family-sans-serif: 'Fira Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 $font-family-special-head: $font-family-sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
+//@import url('https://fonts.googleapis.com/css?family=PT+Mono');
+//$font-family-monospace: 'PT Mono', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-monospace: 'Anonymous Pro', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
 
 $app-red-color: #B71C1C;
 
@@ -80,12 +85,12 @@ h1.page-title {
   margin-bottom: 1rem;
 }
 .entry-title {
-  @extend .h2;
+  @extend .h3;
   font-family: $font-family-sans-serif;
   margin: 0;
   padding: 0;
   margin-top: 0.33rem;
-  letter-spacing: -0.05rem;
+  letter-spacing: -0.03rem;
   a {
     display: block;
   }
@@ -105,8 +110,10 @@ h1.page-title {
 
 pre {
   background-color: $code-bg;
+  margin-left: -1rem;
+  margin-right: -1rem;
   padding: 0.5rem 1rem 0.5rem 1rem;
-  border-radius: 5px;
+  //border-radius: 5px;
 
   pre {
     padding: 0;
@@ -141,33 +148,46 @@ code {
     @extend .blockquote;
     font-family: inherit;
     font-size: 1rem;
+    p:last-child {
+      margin-bottom: 0;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Fira Sans';
-    letter-spacing: -0.04rem;
+    letter-spacing: -0.02rem;
   }
 
-  // h1, h2, h3 {
-  //   @extend .h4;
-  //   font-weight: bold;
-  // }
-  // h4 { @extend .h5 }
-  // h5 { @extend .h6 }
+  h3 { @extend .h4 }
+  h4 { @extend .h5 }
+  h5 { @extend .h6 }
 }
 
 .entry-footer {
-  @extend %special-head;
-
   margin-top: 1rem;
 
+  @extend %special-head;
   color: $text-muted;
+
+  display: flex;
+  justify-content: space-between;
+
+  .entry-footer-source {
+    margin-right: 1em;
+
+    // force one line with ellipsis
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   & a {
     font-weight: normal;
     color: $text-muted;
   }
   .links {
-    float: right;
+    white-space: nowrap;
+    //float: right;
   }
 }
 
