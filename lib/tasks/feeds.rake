@@ -13,7 +13,7 @@ namespace :feeds do
 
   desc "update feeds"
   task :update => :environment do
-    updater = Updater.new(hard_refresh: ENV['HARD_REFRESH'] == "true")
+    updater = Updater.new(refresh: (ENV['REFRESH'] ? ENV['REFRESH'].to_sym : :conditional))
 
     if ENV["FEED_ID"].present?
       updater.update_feed_ids(ENV["FEED_ID"].split(",").collect(&:to_i))

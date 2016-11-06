@@ -3,14 +3,14 @@ class FeedUpdater
   class_attribute :max_fetch_entries
   self.max_fetch_entries = 100
 
-  attr_reader :db_feed, :hard_refresh
+  attr_reader :db_feed, :refresh
 
-  # if hard_refresh:true, then do NOT do conditional http get,
+  # if refresh: :hard, then do NOT do conditional http get,
   # force a refresh.
-  def initialize(db_feed, hard_refresh: false)
+  def initialize(db_feed, refresh: :conditional)
     raise ArgumentError("need a Feed object") unless db_feed.kind_of?(Feed)
     @db_feed = db_feed
-    @hard_refresh = hard_refresh
+    @refresh = refresh
   end
 
   def update
@@ -61,7 +61,7 @@ class FeedUpdater
       "User-Agent" => "#{HTTP::Request::USER_AGENT} (rubyland aggregator)"
     }
 
-    unless hard_refresh
+    unless refresh == :hard
       if db_feed.http_etag
         headers["If-None-Match"] = db_feed.http_etag
       end
