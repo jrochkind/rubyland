@@ -56,14 +56,13 @@ h1 {
 }
 
 h1.page-title {
-  color: $text-muted;
+  @extend %main-column;
   text-align: center;
 }
 
-
-
 .about {
   @extend %main-column;
+  @extend %card;
   a.shortlink {
     @extend %special-head;
     margin-left: 1rem;
@@ -97,15 +96,14 @@ h1.page-title {
 }
 .entry-pre-header {
   @extend %special-head;
-
-  color: $text-muted;
-  & a {
-    color: $text-muted;
+  display: flex;
+  justify-content: space-between;
+  .entry-header-source {
+    margin-right: 1em;
   }
-}
-
-.entry-datetime {
-  float: right;
+  .entry-datetime {
+    white-space: nowrap;
+  }
 }
 
 pre {
@@ -167,7 +165,6 @@ code {
   margin-top: 1rem;
 
   @extend %special-head;
-  color: $text-muted;
 
   display: flex;
   justify-content: space-between;
@@ -181,13 +178,8 @@ code {
     text-overflow: ellipsis;
   }
 
-  & a {
-    font-weight: normal;
-    color: $text-muted;
-  }
   .links {
     white-space: nowrap;
-    //float: right;
   }
 }
 

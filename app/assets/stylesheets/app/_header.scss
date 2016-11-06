@@ -12,7 +12,7 @@ $header-spacing: 1em;
   padding-left: $header-spacing;
   color: white;
 
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   background-color: $app-red-color;
 
   a {
@@ -37,14 +37,18 @@ $header-spacing: 1em;
   }
   .header-nav {
     margin-right: $header-spacing;
-    .header-nav-item {
+    a.header-nav-item {
       @extend %special-head;
+      color: white;
       display: inline-block;
       padding-top: .425rem;
       padding-bottom: .425rem;
       margin-left: 1.5rem;
       &:first-child {
         margin-left: 0;
+      }
+      &:hover, &:focus {
+        color: $link-hover-color;
       }
     }
   }

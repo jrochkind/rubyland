@@ -3,16 +3,16 @@
     .entry
       .entry-head
         .entry-pre-header
+          span.entry-header-source
+            = link_to entry.feed.title, entry.feed.url || entry.url
+            | &nbsp;
+            span.entry-feed-url
+              = link_to entry.feed.feed_url do
+                i.fa.fa-rss
           span.entry-datetime
             =< time_ago_in_words(entry.datetime.to_date)
             '
             ' ago
-          span.entry-feed-url
-            = link_to entry.feed.feed_url do
-              i.fa.fa-rss
-          '
-          span.entry-source
-            = link_to entry.feed.title, entry.feed.url || entry.url
         h2.entry-title
           = link_to_if entry.url, entry.title, entry.url
 
@@ -23,6 +23,9 @@
           = link_to "Read more at #{entry.feed.title}", entry.url, class: 'entry-footer-source'
           .links
             a.link-reddit href="https://www.reddit.com/r/ruby/submit?url=#{CGI.escape entry.url}&amp;title=#{CGI.escape entry.title}"
-              i.fa.fa-reddit
+              |  22
+              '
+              i.fa.fa-comment
               |  Reddit
+
 
