@@ -99,19 +99,20 @@ h1.page-title {
   }
 }
 
-.feed-icon {
-  height: 0.8em;
-  width: 0.8em;
-  vertical-align: baseline;
-}
 .entry-datetime {
   float: right;
 }
 
 pre {
   background-color: $code-bg;
-  padding: 0.5em 1em 0.5em 1em;
+  padding: 0.5rem 1rem 0.5rem 1rem;
   border-radius: 5px;
+
+  pre {
+    padding: 0;
+    border: 0;
+    margin: 0;
+  }
 }
 
 code {
@@ -119,22 +120,22 @@ code {
 }
 
 .entry-body {
-  @extend .clearfix;
   font-family: $font-family-serif;
   //font-family: 'Fira Sans';
   //font-family: $font-family-sans-serif;
   img {
     max-width: 100%;
     max-height: 12rem;
-    margin: 0 1em 1em 0;
+    margin: 0 1rem 1rem 0;
     display: block;
     margin-right: auto;
     margin-left: auto;
   }
 
-  & > div {
-    //@extend .p;
-  }
+  // make top-level div's like p's
+  // & > div {
+  //   margin-bottom: 1rem;
+  // }
 
   blockquote {
     @extend .blockquote;
@@ -157,6 +158,8 @@ code {
 
 .entry-footer {
   @extend %special-head;
+
+  margin-top: 1rem;
 
   color: $text-muted;
   & a {
