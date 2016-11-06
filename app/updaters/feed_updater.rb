@@ -24,20 +24,20 @@ class FeedUpdater
 
     feed = Feedjira::Feed.parse response.to_s
 
+    db_feed.http_etag = response["Etag"]
+    db_feed.http_last_modified = response["Last-Modified"]
+
+    db_feed.title = feed.title
+    db_feed.description = feed.description
+    db_feed.url = feed.url
+
+    entries = feed.entries.slice(0, max_fetch_entries).collect do |entry|
+      EntryUpdater.new(db_feed, entry).build
+    end
+
     Feed.transaction do
-      db_feed.http_etag = response["Etag"]
-      db_feed.http_last_modified = response["Last-Modified"]
-
-      db_feed.title = feed.title
-      db_feed.description = feed.description
-      db_feed.url = feed.url
-
-      feed.entries.slice(0, max_fetch_entries).each do |entry|
-        EntryUpdater.new(db_feed, entry).update
-      end
-
+      entries.each(:save!)
       db_feed.mark_success
-
       db_feed.save!
     end
   rescue StandardError => e

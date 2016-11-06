@@ -6,7 +6,7 @@ class EntryUpdater
     @db_feed, @feedjira_entry = db_feed, feedjira_entry
   end
 
-  def update
+  def build
     db_entry = Entry.find_or_initialize_by(feed: db_feed, entry_id: feedjira_entry.entry_id)
 
     db_entry.title = feedjira_entry.title.try(:scrub)
@@ -15,6 +15,11 @@ class EntryUpdater
 
     db_entry.datetime = get_datetime(feedjira_entry, cached: db_entry.datetime)
 
+    db_entry
+  end
+
+  def update
+    db_entry = build
     db_entry.save!
   end
 
