@@ -48,6 +48,10 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
+.bullet-icon {
+  width: 1em;
+}
+
 h1 {
   @extend %special-head;
   text-transform: uppercase;
