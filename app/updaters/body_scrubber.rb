@@ -28,10 +28,35 @@ class BodyScrubber
 
     loofah_fragment = self.class.nokogiri_truncate(loofah_fragment, separator: ' ')
 
+    existing_headings = []
+    %w{h1 h2 h3 h4 h5 h6}.each do |potential_heading|
+      if loofah_fragment.at_css(potential_heading)
+        existing_headings << potential_heading
+      end
+    end
+    if existing_headings.present? && existing_headings != ["h3"]
+      loofah_fragment.scrub!(HeadingNormalizer.new(existing_headings: existing_headings))
+    end
+
     return loofah_fragment.to_html(encoding: "UTF-8")
   end
 
   protected
+
+  class HeadingNormalizer < Loofah::Scrubber
+    attr_reader :existing_headings
+    def initialize(options = {}, &block)
+      super
+      @existing_headings = options.fetch(:existing_headings)
+    end
+
+    def scrub(node)
+      if level = existing_headings.index(node.name)
+        node.name = "h#{level + 3}"
+      end
+    end
+  end
+
 
   def initial_content
     # summary sounds nice, but too many feeds have lame one sentance summaries,
