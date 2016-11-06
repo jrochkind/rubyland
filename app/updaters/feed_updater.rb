@@ -36,7 +36,7 @@ class FeedUpdater
     end
 
     Feed.transaction do
-      entries.each(:save!)
+      entries.each(&:save!)
       db_feed.mark_success
       db_feed.save!
     end
