@@ -10,6 +10,5 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-// require jquery
-// require jquery_ujs
-//= require_tree .
+//= require moment
+//= require feed_relative_dates

@@ -9,10 +9,8 @@
             span.entry-feed-url
               = link_to entry.feed.feed_url do
                 i.fa.fa-rss
-          span.entry-datetime
-            =< time_ago_in_words(entry.datetime.to_date)
-            '
-            ' ago
+          span.entry-datetime data-time=entry.datetime.utc.iso8601 data-time-calendar-only=date_is_utc_beginning_of_day?(entry.datetime)
+            =< l entry.datetime.to_date, format: :long
         h2.entry-title
           = link_to_if entry.url, entry.title, entry.url
 

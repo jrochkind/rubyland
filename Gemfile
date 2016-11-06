@@ -33,6 +33,7 @@ gem 'addressable', '~> 2.4'
 gem 'bootstrap', '>= 4.0.0.alpha5', '< 4.1'
 gem 'http', '~> 2.0'
 gem "font-awesome-rails", '~> 4.7'
+gem 'momentjs-rails', '~> 2.0'
 
 require 'rbconfig'
 if RbConfig::CONFIG['target_os'] =~ /darwin(1[0-3])/i
