@@ -13,10 +13,15 @@
       <div class="header-brand">
         <h1><%= link_to 'Rubyland', root_url %></h1>
         <div class="header-subtitle">
-          news, opinion, tutorials about <a href="https://www.ruby-lang.org/en/">ruby</a>, aggregated
+          news, opinion, tutorials about <a href="https://www.ruby-lang.org/">ruby</a>, aggregated
         </div>
       </div>
       <div class="header-nav">
+        <% if params[:controller] == "aggregator" && !titles_only? %>
+          <%= link_to "Titles Only", titles_only_path, class: "header-nav-item" %>
+        <% else %>
+          <%= link_to "Summaries", root_path, class: "header-nav-item" %>        
+        <% end %>
         <%= link_to "Sources", sources_path, class: "header-nav-item" %>
         <%= link_to "About", about_path, class: "header-nav-item" %>
       </div>

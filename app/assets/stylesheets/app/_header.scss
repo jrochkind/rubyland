@@ -28,11 +28,14 @@ $header-spacing: 1em;
     h1 {
       display: inline;
       margin-bottom: 0;
-      heading-bottom: 0;
+      padding-bottom: 0;
+      font-weight: 400;
     }
     .header-subtitle {
       // not sure why we need this to get a good lockup
       margin-top: -0.4rem;
+      font-weight: 300;
+      font-family: $font-family-sans-serif;
     }
   }
   .header-nav {

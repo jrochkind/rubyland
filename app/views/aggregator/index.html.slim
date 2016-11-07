@@ -1,29 +1,29 @@
 .entries
-  - entries.each do |entry|
-    .entry
-      .entry-head
-        .entry-pre-header
-          span.entry-header-source
-            = link_to entry.feed.title, entry.feed.url || entry.url
-            | &nbsp;
-            span.entry-feed-url
-              = link_to entry.feed.feed_url do
-                i.fa.fa-rss
-          span.entry-datetime data-time=entry.datetime.utc.iso8601 data-time-calendar-only=date_is_utc_beginning_of_day?(entry.datetime)
-            =< l entry.datetime.to_date, format: :long
-        h2.entry-title
-          = link_to_if entry.url, entry.title, entry.url
-
-      .entry-body
-        = raw entry.prepared_body
-      - if entry.url
-        div.entry-footer
-          = link_to "Read more at #{entry.feed.title}", entry.url, class: 'entry-footer-source'
-          .links
-            a.link-reddit href="https://www.reddit.com/r/ruby/submit?url=#{CGI.escape entry.url}&amp;title=#{CGI.escape entry.title}"
-              |  22
-              '
-              i.fa.fa-comment
-              |  Reddit
+  - cache([titles_only?, entries.cache_key]) do
+    - entries.each do |entry|
+      .entry
+        .entry-head
+          .entry-pre-header
+            span.entry-header-source
+              = link_to entry.feed.title, entry.feed.url || entry.url
+              | &nbsp;
+              span.entry-feed-url
+                = link_to entry.feed.feed_url do
+                  i.fa.fa-rss
+            span.entry-datetime data-time=entry.datetime.utc.iso8601 data-time-calendar-only=date_is_utc_beginning_of_day?(entry.datetime)
+              =< l entry.datetime.to_date, format: :long
+          h2.entry-title
+            = link_to_if entry.url, entry.title, entry.url
+        - unless titles_only?
+          .entry-body
+            = raw entry.prepared_body
+        - if entry.url
+          div.entry-footer
+            - unless titles_only?
+              = link_to "Read more at #{entry.feed.title}", entry.url, class: 'entry-footer-source'
+            .links
+              a.link-reddit data-link-reddit="adfadfadfadfadfadfadf"href="https://www.reddit.com/r/ruby/submit?url=#{CGI.escape entry.url}&amp;title=#{CGI.escape entry.title}"
+                i.fa.fa-reddit
+                |  On Reddit
 
 

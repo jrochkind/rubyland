@@ -13,5 +13,9 @@ class AggregatorController < ApplicationController
   end
   helper_method :entries
 
+  def titles_only?
+    !! params[:titles_only]
+  end
+  helper_method :titles_only?
 
 end
