@@ -8,6 +8,7 @@ https://tenderlovemaking.com/atom.xml
 https://feeds.feedwrench.com/RubyRogues.rss
 http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots
 
+http://rubysec.com/atom.xml
 
 http://feeds.feedburner.com/arkency.xml
 https://gorails.com/episodes.rss
@@ -63,3 +64,6 @@ http://feeds.feedburner.com/jonmccartie
 
 https://blog.blockscore.com/feed.xml
 http://www.alfredo.motta.name/feed/
+
+# just tagged ruby
+https://bibwild.wordpress.com/feed/?tag=ruby
