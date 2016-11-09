@@ -22,8 +22,8 @@
             - unless titles_only?
               = link_to "Read more at #{entry.feed.title}", entry.url, class: 'entry-footer-source'
             .links
-              a.link-reddit data-link-reddit="adfadfadfadfadfadfadf"href="https://www.reddit.com/r/ruby/submit?url=#{CGI.escape entry.url}&amp;title=#{CGI.escape entry.title}"
+              a.link-reddit data-link-reddit=entry.url href="https://www.reddit.com/r/ruby/submit?url=#{CGI.escape entry.url}&amp;title=#{CGI.escape entry.title}"
                 i.fa.fa-reddit
-                |  On Reddit
+                |  Reddit
 
 
