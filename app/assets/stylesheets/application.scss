@@ -42,8 +42,8 @@ $font-family-base: Georgia, "Times New Roman", Times, serif;
 
 $font-size-h1: 2.2rem;
 $font-size-h2: 1.6rem !default;
-$font-size-h3: 1.6rem !default;
-$font-size-h4: 1.25rem !default;
+$font-size-h3: 1.35rem !default;
+$font-size-h4: 1.15rem !default;
 $font-size-h5: 1rem !default;
 $font-size-h6: 1rem !default;
 
@@ -96,7 +96,7 @@ h3 {
 h4, h5, h6 {
   letter-spacing: -0.01rem;
 }
-h5 {
+h3, h4, h5 {
   font-weight: 500;
 }
 
