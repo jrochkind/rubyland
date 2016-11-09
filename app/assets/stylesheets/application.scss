@@ -114,6 +114,10 @@ h1.page-title {
   @extend %card;
   a.shortlink {
     @extend %special-head;
+    color: $link-color;
+    &:hover, &:focus {
+      color: $link-hover-color;
+    }
     margin-left: 1rem;
   }
   em {
