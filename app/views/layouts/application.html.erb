@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="header-nav">
-        <% if params[:controller] == "aggregator" && !titles_only? %>
+        <% unless on_titles_only_feed? %>
           <%= link_to "Titles Only", titles_only_path, class: "header-nav-item" %>
         <% else %>
           <%= link_to "Summaries", root_path, class: "header-nav-item" %>        
