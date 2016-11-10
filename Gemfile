@@ -35,6 +35,10 @@ gem 'http', '~> 2.0'
 gem "font-awesome-rails", '~> 4.7'
 gem 'momentjs-rails', '~> 2.0'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-fetch', '~> 1.0'
+end
+
 require 'rbconfig'
 if RbConfig::CONFIG['target_os'] =~ /darwin(1[0-3])/i
   gem 'rb-fsevent', '<= 0.9.4'
