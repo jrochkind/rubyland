@@ -7,8 +7,8 @@ class Feed < ActiveRecord::Migration[5.0]
       t.string :url
 
       t.datetime :last_fetch_at
-      t.string :last_fetch_status, default: "not_yet_attempted"
-      t.json :last_fetch_error_info
+      t.string :fetch_status, default: "not_yet_attempted"
+      t.json :fetch_error_info
 
       t.string :http_etag
       t.string :http_last_modified

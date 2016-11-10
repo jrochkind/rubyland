@@ -22,7 +22,7 @@ h1.page-title
           .last-fetch-info
             .last-fetch-info-cell.status
               span class=class_for_feed_status(feed)
-                = feed.last_fetch_status
+                = feed.fetch_status
             .last-fetch-info-cell.datetime-ago
               = time_ago_in_words(feed.last_fetch_at)
               |  ago

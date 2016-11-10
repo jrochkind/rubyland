@@ -1,7 +1,7 @@
 module FeedHelper
 
   def class_for_feed_status(feed)
-    if feed.last_fetch_success?
+    if feed.fetch_success?
       'text-success'
     else
       'text-danger'
