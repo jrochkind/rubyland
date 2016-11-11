@@ -9,6 +9,15 @@
   // before giving up and not doing it anymore...
   var maxFetchErrors = 3;
 
+  function redditErrorAlert() {
+    var al = document.querySelector("#alert");
+    al.innerHTML = "<i class='fa fa-exclamation-triangle'></i> Couldn't contact reddit api, your ad-blocker might be stopping us.";
+    al.style.opacity = 1.0;
+    al.style.display = "";
+    setTimeout(fadeOut.bind(undefined, al), 4000);
+    ;
+  }
+
 
   function liveRedditLoad(element) {
     if (fetchErrors > maxFetchErrors) {
@@ -23,6 +32,10 @@
     fetch(request_url).
       then(function (response) { return response.json() }).
       catch(function(error) {
+        if (fetchErrors == 0) {
+          redditErrorAlert();
+        }
+
         fetchErrors += 1;
         element.innerHTML = "<i class='fa fa-reddit'></i> Reddit";
         console.log("Error trying to contact Reddit. Do you have an ad-blocker stopping us? " + error);

@@ -14,6 +14,7 @@
 //= require moment
 //= require fetch
 //= require appear
+//= require fade
 //
 //= require feed_relative_dates
 //= require live_reddit_links
