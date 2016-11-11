@@ -3,8 +3,8 @@ module ApplicationHelper
     date.beginning_of_day == date
   end
 
-  def on_titles_only_feed?
-    params[:controller] == "aggregator" && !!params[:titles_only]
+  def on_feed_entries_page?
+    params[:controller] == "aggregator" && params[:action] == "index"
   end
 
 end
