@@ -11,6 +11,10 @@
 
 
   function liveRedditLoad(element) {
+    if (fetchErrors > maxFetchErrors) {
+      return;
+    }
+
     element.innerHTML = "<i class='fa fa-spinner fa-spin'></i> Reddit";
 
     var url = element.dataset.linkReddit;
@@ -21,7 +25,7 @@
       catch(function(error) {
         fetchErrors += 1;
         element.innerHTML = "<i class='fa fa-reddit'></i> Reddit";
-        console.log("Error trying to contact Reddit: " + error);
+        console.log("Error trying to contact Reddit. Do you have an ad-blocker stopping us? " + error);
         throw error;
       }).
       then(setFromResponse.bind(this, element));
