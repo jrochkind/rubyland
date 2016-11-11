@@ -19,13 +19,9 @@
 
 $enable-flex: true;
 
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:light,regular,medium,bold');
 $font-family-sans-serif: 'Fira Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 $font-family-special-head: $font-family-sans-serif;
 
-@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
-//@import url('https://fonts.googleapis.com/css?family=PT+Mono');
-//$font-family-monospace: 'PT Mono', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 $font-family-monospace: 'Anonymous Pro', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
 
