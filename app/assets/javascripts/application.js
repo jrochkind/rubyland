@@ -13,6 +13,7 @@
 //= require ready
 //= require moment
 //= require fetch
+//= require appear
 //
 //= require feed_relative_dates
 //= require live_reddit_links

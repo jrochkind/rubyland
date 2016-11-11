@@ -49,10 +49,17 @@
 
   ready(function() {
 
-    var elements = document.querySelectorAll(".entry *[data-link-reddit]")
-    for (var i = 0; i < elements.length; i++) {
-      liveRedditLoad(  elements[i] );
-    }
+    // Load reddit when elements are in viewport, with a pretty big `bounds`
+    // to get elements some pixels off screen too. 
+    // https://github.com/creativelive/appear
+    appear({
+      elements: function elements(){
+        // work with all elements with the class "track"
+        return document.querySelectorAll(".entry *[data-link-reddit]");
+      },
+      appear: liveRedditLoad,
+      bounds: 600
+    });
 
   });
 
