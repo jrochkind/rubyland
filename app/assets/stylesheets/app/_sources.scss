@@ -21,12 +21,14 @@
     flex-wrap: wrap;
     justify-content: space-between;
   }
+  .last-fetch-info-cell.datetime, .last-fetch-info-cell.status {
+    font-family: $font-family-monospace;
+  }
   .latest-entry {
     display: flex;
-    justify-content: space-between;
   }
   .latest-entry-datetime {
-    margin-left: 1rem;
+    margin-right: 1rem;
     white-space: nowrap;
   }
 
@@ -36,7 +38,7 @@
     font-size: 90%;
   }
 
-  .last-fetch-info, .latest-entry {
+  .last-fetch-info {
     display: flex;
     & > * {
       padding-right: 1rem;
