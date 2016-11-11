@@ -157,6 +157,43 @@ h1.page-title {
   }
 }
 
+.titles-only .entry {
+  margin-top: 0;
+  margin-bottom: -1px;
+  border-radius: 0;
+  &:first-child {
+    border-radius: 3px 3px 0 0;
+  }
+  &:last-child {
+    border-radius: 0 0 3px 3px;
+    margin-bottom: 1rem;
+  }
+
+  .entry-pre-header {
+    justify-content: flex-start;
+  }
+  .entry-title {
+    font-size: 1rem;
+    letter-spacing: 0;
+    font-weight: 400;
+  }
+  .entry-datetime {
+    order: 1;
+    width: 6rem;
+    margin-right: 1rem;
+  }
+  .entry-header-source {
+    order: 2;
+  }
+  .links, .entry-pre-header {
+    font-size: 0.8rem;
+  }
+  .links {
+    width: 100%;
+    text-align: right;
+  }
+}
+
 pre {
   background-color: $code-bg;
   margin-left: -1rem;
