@@ -9,7 +9,7 @@ class Feed < ApplicationRecord
 
   has_many :entries, dependent: :destroy
 
-  validates_presence_of :feed_url
+  validates :feed_url, presence: true
 
   def fetch_success?
     fetch_ok? || fetch_not_modified?

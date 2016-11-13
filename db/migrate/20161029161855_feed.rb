@@ -3,7 +3,7 @@ class Feed < ActiveRecord::Migration[5.0]
     create_table :feeds do |t|
       t.string :title
       t.string :description
-      t.string :feed_url, index: true, uniq: true
+      t.string :feed_url, index: true
       t.string :url
 
       t.datetime :last_fetch_at

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029162740) do
+ActiveRecord::Schema.define(version: 20161113184854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,13 +24,14 @@ ActiveRecord::Schema.define(version: 20161029162740) do
     t.integer  "feed_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["entry_id"], name: "index_entries_on_entry_id", unique: true, using: :btree
     t.index ["feed_id"], name: "index_entries_on_feed_id", using: :btree
   end
 
   create_table "feeds", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
-    t.string   "feed_url"
+    t.string   "feed_url",                                         null: false
     t.string   "url"
     t.datetime "last_fetch_at"
     t.string   "fetch_status",       default: "not_yet_attempted"
@@ -39,7 +40,7 @@ ActiveRecord::Schema.define(version: 20161029162740) do
     t.string   "http_last_modified"
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
-    t.index ["feed_url"], name: "index_feeds_on_feed_url", using: :btree
+    t.index ["feed_url"], name: "index_feeds_on_feed_url", unique: true, using: :btree
   end
 
 end
