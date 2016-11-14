@@ -94,7 +94,6 @@ GEM
     momentjs-rails (2.15.1)
       railties (>= 3.1)
     multipart-post (2.0.0)
-    newrelic_rpm (3.17.1.326)
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
@@ -185,7 +184,6 @@ DEPENDENCIES
   http (~> 2.0)
   listen (~> 3.0.5)
   momentjs-rails (~> 2.0)
-  newrelic_rpm
   pg (~> 0.18)
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)

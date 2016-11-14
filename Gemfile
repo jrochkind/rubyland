@@ -36,10 +36,6 @@ gem 'http', '~> 2.0'
 gem "font-awesome-rails", '~> 4.7'
 gem 'momentjs-rails', '~> 2.0'
 
-# New relic docs suggest we shouldn't really need to add this
-# on heroku, but let's try it...
-gem 'newrelic_rpm'
-
 source 'https://rails-assets.org' do
   gem 'rails-assets-fetch', '~> 1.0'
 end
