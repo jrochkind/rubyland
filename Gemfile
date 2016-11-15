@@ -36,6 +36,9 @@ gem 'http', '~> 2.0'
 gem "font-awesome-rails", '~> 4.7'
 gem 'momentjs-rails', '~> 2.0'
 
+gem 'platform-api', git: 'https://github.com/jalada/platform-api.git', branch: 'master'
+gem 'letsencrypt-rails-heroku', group: 'production'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-fetch', '~> 1.0'
 end
