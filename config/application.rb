@@ -13,7 +13,5 @@ module Rubyland
     # -- all .rb files in that directory are automatically loaded.
 
     config.middleware.use Rack::Deflater
-
-    config.middleware.use Letsencrypt::Middleware
   end
 end
