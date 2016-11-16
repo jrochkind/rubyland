@@ -69,3 +69,4 @@ http://www.alfredo.motta.name/feed/
 https://bibwild.wordpress.com/feed/?tag=ruby
 
 http://hanamirb.org/atom.xml
+http://blog.davydovanton.com/atom.xml
