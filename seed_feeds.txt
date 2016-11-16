@@ -67,3 +67,5 @@ http://www.alfredo.motta.name/feed/
 
 # just tagged ruby
 https://bibwild.wordpress.com/feed/?tag=ruby
+
+http://hanamirb.org/atom.xml
