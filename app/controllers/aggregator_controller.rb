@@ -33,7 +33,7 @@ class AggregatorController < ApplicationController
     # Rails does template dependency fingerprinting, but it misses
     # a lot of things, and involves kind of reverse engineering Rails.
     # This is pretty decent.
-    [ENV['SOURCE_VERSION']] + view_cache_key.unshift
+    [ENV['SOURCE_VERSION']] + view_cache_key
   end
 
 end
