@@ -70,3 +70,5 @@ https://bibwild.wordpress.com/feed/?tag=ruby
 
 http://hanamirb.org/atom.xml
 http://blog.davydovanton.com/atom.xml
+
+http://www.ombulabs.com/blog/rss.xml
