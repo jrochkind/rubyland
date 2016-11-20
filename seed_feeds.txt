@@ -72,4 +72,4 @@ http://hanamirb.org/atom.xml
 http://blog.davydovanton.com/atom.xml
 
 http://www.ombulabs.com/blog/rss.xml
-http://www.speedshop.co/feed.xml
+https://www.speedshop.co/feed.xml
