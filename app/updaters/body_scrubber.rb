@@ -102,6 +102,9 @@ class BodyScrubber
       end
 
       base_url.join Addressable::URI.parse(url)
+    rescue Addressable::URI::InvalidURIError => e
+      # not a URI at all? Um, let's strip it, I guess?
+      return nil
     end
 
     def scrub(node)
@@ -115,7 +118,6 @@ class BodyScrubber
         end
 
         node['href'] = resolve(node['href'])
-
       end
     end
   end
