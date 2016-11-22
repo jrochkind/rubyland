@@ -20,12 +20,20 @@ $sidebarMargin: 1.5rem;
     @include list-unstyled;
     margin: 0;
     li {
+      @extend %special-head;
       display: inline;
       margin: 0;
       padding: 0;
       &:not(:last-child) {
         margin-right: 2rem;
       }
+
+      a {
+        display: inline-block;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+      }
+
     }
   }
 }
@@ -46,7 +54,7 @@ $sidebarMargin: 1.5rem;
   .wrapper {
     display: flex;
     align-items: stretch;
-    justify-content: center;
+    //justify-content: center;
   }
 
   .main-column {
@@ -70,6 +78,9 @@ $sidebarMargin: 1.5rem;
 // If we really have enough room, center the main column again, with controls
 // off to one side, unbalanced.
 @media (min-width: rem-to-pixels($mainColumnWidth + ($sidebarWidth * 2) + ($sidebarMargin * 3))) {
+  .wrapper {
+    justify-content: center;
+  }
   .controls:not(:empty) + .main-column {
     margin-right: $sidebarMargin + $sidebarMargin + $sidebarWidth;
   }
