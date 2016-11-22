@@ -40,6 +40,9 @@
     </div>
     <div id="alert" class="head-alert" style="display: none;" role="alert"></div>
 
+    <% if content_for?(:title) %>
+      <h1 class="page-title"><%= content_for :title %></h1>
+    <% end %>
 
     <div class="wrapper">
       <div class="controls">
