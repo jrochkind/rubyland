@@ -1,22 +1,22 @@
 $mainColumnWidth: 36rem;
-$sidebarWidth: 7rem;
+$sidebarWidth: 8rem;
 $sidebarMargin: 1.5rem;
 
-.wrapper {
-  display: flex;
-  width: auto;
-  flex-direction: column;
-  align-items: center;
-}
+// At default small sizes, it's just controls stacked on top
+// of main column, both centered. We tried this with flexbox
+// column direction first, for consistency, but pre's were
+// making the main column exceed viewport size and horizontal
+// scrollbar, not sure why.
 
 .main-column {
-  flex: none;
   max-width: $mainColumnWidth;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .controls {
-  flex: none;
   ul {
+    text-align: center;
     @include list-unstyled;
     margin: 0;
     li {
@@ -44,7 +44,7 @@ $sidebarMargin: 1.5rem;
 // both together next to each other. 
 @media (min-width: rem-to-pixels($mainColumnWidth + $sidebarWidth + ($sidebarMargin * 3))) {
   .wrapper {
-    flex-direction: row;
+    display: flex;
     align-items: stretch;
     justify-content: center;
   }
@@ -53,6 +53,7 @@ $sidebarMargin: 1.5rem;
     margin-left: $sidebarMargin;
   }
   .controls {
+    text-align: left;
     width: $sidebarWidth;
     margin-left: $sidebarMargin;
     margin-bottom: 1rem;
