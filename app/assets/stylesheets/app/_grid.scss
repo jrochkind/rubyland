@@ -1,0 +1,74 @@
+$mainColumnWidth: 36rem;
+$sidebarWidth: 7rem;
+$sidebarMargin: 1.5rem;
+
+.wrapper {
+  display: flex;
+  width: auto;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-column {
+  flex: none;
+  max-width: $mainColumnWidth;
+}
+
+.controls {
+  flex: none;
+  ul {
+    @include list-unstyled;
+    margin: 0;
+    li {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+  }
+}
+
+// Media query em/rem is always in terms of the browser default font, not
+// anything in our CSS. Which makes them rather unsuitable for breakpoints
+// in our rem-based layout. So we convert to pixels based on our own intended
+// root size. Not sure about failure edge cases there, but seems to work.
+// May suggest rem-based layout is a bad idea?
+@function rem-to-pixels($rem) {
+  @return ceil(($rem / 1rem) * $font-size-root);
+}
+
+
+// If we have enough room, bring controls to the side vertically, centering
+// both together next to each other. 
+@media (min-width: rem-to-pixels($mainColumnWidth + $sidebarWidth + ($sidebarMargin * 3))) {
+  .wrapper {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+  }
+  .main-column {
+    margin-right: $sidebarMargin;
+    margin-left: $sidebarMargin;
+  }
+  .controls {
+    width: $sidebarWidth;
+    margin-left: $sidebarMargin;
+    margin-bottom: 1rem;
+    ul li {
+      display: block;
+      &:not(:last-child) {
+        margin: 0;
+      }
+    }
+  }
+}
+
+// If we really have enough room, center the main column again, with controls
+// off to one side, unbalanced.
+@media (min-width: rem-to-pixels($mainColumnWidth + ($sidebarWidth * 2) + ($sidebarMargin * 3))) {
+  .main-column {
+    margin-right: $sidebarMargin + $sidebarMargin + $sidebarWidth;
+  }
+}

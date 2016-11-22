@@ -51,6 +51,7 @@ $font-size-h6: 1rem !default;
 @import "app/mixins";
 @import "app/header";
 @import "app/sources";
+@import "app/grid";
 
 a:hover, a:focus {
   text-decoration: none;
