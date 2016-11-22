@@ -48,11 +48,12 @@ $sidebarMargin: 1.5rem;
     align-items: stretch;
     justify-content: center;
   }
+
   .main-column {
     margin-right: $sidebarMargin;
     margin-left: $sidebarMargin;
   }
-  .controls {
+  .controls:not(:empty) {
     text-align: left;
     width: $sidebarWidth;
     margin-left: $sidebarMargin;
@@ -69,7 +70,7 @@ $sidebarMargin: 1.5rem;
 // If we really have enough room, center the main column again, with controls
 // off to one side, unbalanced.
 @media (min-width: rem-to-pixels($mainColumnWidth + ($sidebarWidth * 2) + ($sidebarMargin * 3))) {
-  .main-column {
+  .controls:not(:empty) + .main-column {
     margin-right: $sidebarMargin + $sidebarMargin + $sidebarWidth;
   }
 }
