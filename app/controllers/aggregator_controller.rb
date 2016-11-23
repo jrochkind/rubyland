@@ -36,4 +36,11 @@ class AggregatorController < ApplicationController
     [ENV['SOURCE_VERSION']] + view_cache_key
   end
 
+  def absolute_http_url?(str)
+    Addressable::URI.parse(str).try { |u| %w{http https}.include?(u.scheme) }
+  rescue Addressable::URI::InvalidURIError
+    return false
+  end
+  helper_method :absolute_http_url?
+
 end
