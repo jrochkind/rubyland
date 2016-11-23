@@ -7,8 +7,18 @@ class FeedController < ApplicationController
 
   protected
 
+  # Can't do a count on our 'with_latest_entry' join, so...
+  def base_feeds
+    @base_feeds ||= Feed.order("UPPER(feeds.title)")
+  end
+
+  def feed_count
+    @feed_count ||= base_feeds.count
+  end
+  helper_method :feed_count
+
   def feeds
-    @feeds ||= Feed.with_latest_entry.order("UPPER(feeds.title)")
+    @feeds ||= base_feeds.with_latest_entry
   end
   helper_method :feeds
 
