@@ -1,6 +1,16 @@
 - content_for :title, "Sources"
-.sources
-  - cache(feeds.cache_key) do
+
+- content_for :controls do
+  ul
+    li = "#{feed_count} feeds"
+    li
+      = link_to sources_path(format: :opml) do
+        i.fa.fa-code
+        |  OPML
+
+
+- cache(view_cache_key) do
+  .sources
     - feeds.each do |feed|
       .source
         h2 name="id_#{feed.id}"
