@@ -23,17 +23,6 @@
         </div>
       </div>
       <div class="header-nav">
-
-        <% if on_feed_entries_page? %>
-          <% if titles_only? %>
-            <%= link_to "Summaries", root_path, class: "header-nav-item" %>
-          <% else %>
-            <%= link_to "Titles Only", titles_only_path, class: "header-nav-item" %>
-          <% end %>
-        <% else %>
-          <%= link_to "Entries", root_path, class: "header-nav-item" %>
-        <% end %>
-
         <%= link_to "Sources", sources_path, class: "header-nav-item" %>
         <%= link_to "About", about_path, class: "header-nav-item" %>
       </div>
@@ -46,10 +35,7 @@
 
     <div class="wrapper">
       <div class="controls">
-        <ul class="controls-ul">
-          <li><a href="#">Example item</a></li>
-          <li><a href="#">Example item</a></li>
-        </ul>
+        <%= content_for :controls %>
       </div>
       <div class="main-column">
         <%= yield %>

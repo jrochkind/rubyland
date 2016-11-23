@@ -1,3 +1,14 @@
+- content_for :controls do
+  ul
+    - if titles_only?
+      li = link_to root_path do
+        i.fa.fa-align-left
+        |  Summaries
+    - else
+      li = link_to titles_only_path do
+        i.fa.fa-list-ul
+        |  Titles Only
+
 .entries class=('titles-only' if titles_only?)
   - cache(view_cache_key) do
     - entries.each do |entry|
