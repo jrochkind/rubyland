@@ -1,5 +1,5 @@
 %main-column {
-  max-width: 40rem;
+  max-width: $mainColumnWidth;
   margin-left: auto;
   margin-right: auto;
   padding: 0 1rem 1rem 1rem;
@@ -27,7 +27,6 @@
   box-shadow: 0 1px 4px rgba(0,0,0,.04);
   border-radius: 3px;
   margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
 
   padding: 0.66rem 1rem;
 

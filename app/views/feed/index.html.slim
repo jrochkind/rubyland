@@ -1,5 +1,4 @@
-h1.page-title
-  | Sources
+- content_for :title, "Sources"
 .sources
   - cache(feeds.cache_key) do
     - feeds.each do |feed|

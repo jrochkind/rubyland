@@ -1,0 +1,89 @@
+$sidebarWidth: 7rem;
+$sidebarMargin: 1rem;
+
+// At default small sizes, it's just controls stacked on top
+// of main column, both centered. We tried this with flexbox
+// column direction first, for consistency, but pre's were
+// making the main column exceed viewport size and horizontal
+// scrollbar, not sure why.
+
+.main-column {
+  max-width: $mainColumnWidth;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.controls {
+  ul {
+    text-align: center;
+    @include list-unstyled;
+    margin: 0 0 1rem 0;
+    li {
+      @extend %special-head;
+      display: inline;
+      margin: 0;
+      padding: 0;
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+
+      a {
+        display: inline-block;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+      }
+
+    }
+  }
+}
+
+// Media query em/rem is always in terms of the browser default font, not
+// anything in our CSS. Which makes them rather unsuitable for breakpoints
+// in our rem-based layout. So we convert to pixels based on our own intended
+// root size. Not sure about failure edge cases there, but seems to work.
+// May suggest rem-based layout is a bad idea?
+@function rem-to-pixels($rem) {
+  @return ceil(($rem / 1rem) * $font-size-root);
+}
+
+
+// If we have enough room, bring controls to the side vertically, centering
+// both together next to each other. 
+@media (min-width: rem-to-pixels($mainColumnWidth + $sidebarWidth + ($sidebarMargin * 3))) {
+  .wrapper {
+    display: flex;
+    align-items: stretch;
+    //justify-content: center;
+  }
+
+  .main-column {
+    margin-right: $sidebarMargin;
+    margin-left: $sidebarMargin;
+  }
+  .controls:not(:empty) {
+    text-align: left;
+    width: $sidebarWidth;
+    margin-left: $sidebarMargin;
+    margin-bottom: 1rem;
+    ul {
+      text-align: left;
+      li {
+        display: block;
+        &:not(:last-child) {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+// If we really have enough room, center the main column again, with controls
+// off to one side, unbalanced.
+@media (min-width: rem-to-pixels($mainColumnWidth + ($sidebarWidth * 2) + ($sidebarMargin * 3))) {
+  .wrapper {
+    justify-content: center;
+  }
+  .controls:not(:empty) + .main-column {
+    margin-right: $sidebarMargin + $sidebarMargin + $sidebarWidth;
+  }
+}
