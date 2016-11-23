@@ -18,7 +18,7 @@ $sidebarMargin: 1.5rem;
   ul {
     text-align: center;
     @include list-unstyled;
-    margin: 0;
+    margin: 0 0 1rem 0;
     li {
       @extend %special-head;
       display: inline;
@@ -66,10 +66,13 @@ $sidebarMargin: 1.5rem;
     width: $sidebarWidth;
     margin-left: $sidebarMargin;
     margin-bottom: 1rem;
-    ul li {
-      display: block;
-      &:not(:last-child) {
-        margin: 0;
+    ul {
+      text-align: left;
+      li {
+        display: block;
+        &:not(:last-child) {
+          margin: 0;
+        }
       }
     }
   }
