@@ -1,6 +1,7 @@
 - content_for :title, "Sources"
-.sources
-  - cache(feeds.cache_key) do
+
+- cache(view_cache_key) do
+  .sources
     - feeds.each do |feed|
       .source
         h2 name="id_#{feed.id}"
