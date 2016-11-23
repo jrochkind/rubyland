@@ -36,9 +36,8 @@
     <% end %>
 
     <div class="wrapper">
-      <div class="controls">
-        <%= content_for :controls %>
-      </div>
+      <!-- one line so we can trigger empty css when absent -->
+      <div class="controls"><%= content_for :controls %></div>
       <div class="main-column">
         <%= yield %>
       </div>

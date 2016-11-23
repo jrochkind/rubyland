@@ -45,6 +45,7 @@ $font-size-h4: 1.15rem !default;
 $font-size-h5: 1rem !default;
 $font-size-h6: 1rem !default;
 
+$mainColumnWidth: 36rem;
 
 @import "bootstrap_local";
 
@@ -108,7 +109,6 @@ h1.page-title {
 }
 
 .about {
-  @extend %main-column;
   @extend %card;
   a.shortlink {
     @extend %special-head;
@@ -127,7 +127,6 @@ h1.page-title {
 }
 
 .entry {
-  @extend %main-column;
   @extend %card;
 }
 
@@ -135,6 +134,7 @@ h1.page-title {
   margin-bottom: 0.5rem;
 }
 .entry-title {
+  letter-spacing: -0.05rem;
   font-family: $font-family-sans-serif;
   margin: 0;
   padding: 0;
