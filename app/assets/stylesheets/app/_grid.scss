@@ -27,6 +27,10 @@ $sidebarMargin: 1rem;
         margin-right: 2rem;
       }
 
+      i {
+        width: 1rem;
+      }
+
       a {
         display: inline-block;
         padding-top: 0.25rem;
@@ -43,7 +47,8 @@ $sidebarMargin: 1rem;
 // root size. Not sure about failure edge cases there, but seems to work.
 // May suggest rem-based layout is a bad idea?
 @function rem-to-pixels($rem) {
-  @return ceil(($rem / 1rem) * $font-size-root);
+  // not sure why adding an extra 1rem seems to make it turn out
+  @return ceil((($rem + 1rem) / 1rem) * $font-size-root);
 }
 
 

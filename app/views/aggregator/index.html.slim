@@ -8,6 +8,9 @@
       li = link_to titles_only_path do
         i.fa.fa-list-ul
         |  Titles Only
+    li = link_to rubyland_rss_path do
+      i.fa.fa-rss
+      |  RSS Feed
 
 .entries class=('titles-only' if titles_only?)
   - cache(view_cache_key) do
