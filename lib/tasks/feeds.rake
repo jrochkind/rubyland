@@ -13,7 +13,9 @@ namespace :feeds do
 
   desc "update feeds"
   task :update => :environment do
-    updater = Updater.new(refresh: (ENV['REFRESH'] ? ENV['REFRESH'].to_sym : :conditional))
+    # default refresh blank, twitter_update true. 
+    updater = Updater.new(refresh: (ENV['REFRESH'] ? ENV['REFRESH'].to_sym : :conditional),
+                          twitter_update: ENV['TWITTER_UPDATE'] != "false")
 
     if ENV["FEED_ID"].present?
       updater.update_feed_ids(ENV["FEED_ID"].split(",").collect(&:to_i))

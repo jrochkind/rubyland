@@ -7,7 +7,7 @@ class FeedUpdater
 
   # if refresh: :hard, then do NOT do conditional http get,
   # force a refresh.
-  def initialize(db_feed, refresh: :conditional)
+  def initialize(db_feed, refresh: :conditional, twitter_update: false)
     raise ArgumentError.new("need a Feed object") unless db_feed.kind_of?(Feed)
     @db_feed = db_feed
     @refresh = refresh
@@ -40,6 +40,13 @@ class FeedUpdater
       db_feed.mark_success
       db_feed.save!
     end
+
+    if twitter_update
+      entries.each do |entry|
+        EntryTweeter.new(entry).update if entry.tweet_id.blank?
+      end
+    end
+
   rescue StandardError => e
     db_feed.restore_attributes
     db_feed.mark_failed(exception: e)
