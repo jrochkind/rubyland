@@ -1,7 +1,9 @@
 class Updater
   attr_reader :refresh
+  attr_reader :twitter_update
 
-  def initialize(refresh: :conditional)
+  def initialize(refresh: :conditional, twitter_update: false)
+    @twitter_update = twitter_update
     @refresh = refresh
   end
 
@@ -18,7 +20,7 @@ class Updater
   def update_in_scope(scope)
     scope.find_each do |feed|
       begin
-        FeedUpdater.new(feed, refresh: refresh).update
+        FeedUpdater.new(feed, refresh: refresh, twitter_update: twitter_update).update
       rescue StandardError => e
         Rails.logger.error("Could not update #{feed.feed_url}, #{e}")
         raise e

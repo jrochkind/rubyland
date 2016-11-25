@@ -3,7 +3,7 @@ class FeedUpdater
   class_attribute :max_fetch_entries
   self.max_fetch_entries = 100
 
-  attr_reader :db_feed, :refresh
+  attr_reader :db_feed, :refresh, :twitter_update
 
   # if refresh: :hard, then do NOT do conditional http get,
   # force a refresh.
@@ -11,6 +11,7 @@ class FeedUpdater
     raise ArgumentError.new("need a Feed object") unless db_feed.kind_of?(Feed)
     @db_feed = db_feed
     @refresh = refresh
+    @twitter_update = twitter_update
   end
 
   def update
