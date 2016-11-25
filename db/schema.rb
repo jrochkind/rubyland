@@ -10,20 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113184854) do
+ActiveRecord::Schema.define(version: 20161125191419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "entries", force: :cascade do |t|
-    t.string   "entry_id",      null: false
+    t.string   "entry_id",                      null: false
     t.string   "title"
     t.text     "prepared_body"
     t.string   "url"
     t.datetime "datetime"
     t.integer  "feed_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.boolean  "hidden",        default: false
+    t.string   "tweet_id"
     t.index ["entry_id"], name: "index_entries_on_entry_id", unique: true, using: :btree
     t.index ["feed_id"], name: "index_entries_on_feed_id", using: :btree
   end
