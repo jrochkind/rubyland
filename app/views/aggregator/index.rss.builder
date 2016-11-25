@@ -1,5 +1,7 @@
 cache(view_cache_key) do
-  xml.rss("version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/") do
+  xml.rss("version" => "2.0", 
+          "xmlns:dc" => "http://purl.org/dc/elements/1.1/",
+          "xmlns:blogChannel" => "http://backend.userland.com/blogChannelModule") do
     xml.channel do
       xml.title("Rubyland")
       xml.link("http://www.rubyland.news")
@@ -7,10 +9,7 @@ cache(view_cache_key) do
       xml.language "en-us"
       xml.generator "https://github.com/jrochkind/rubyland"
 
-  # <blogChannel:blogRoll>
-  # http://radio.weblogs.com/0001015/userland/scriptingNewsLeftLinks.opml
-  # </blogChannel:blogRoll>
-
+      xml.tag!("blogChannel:blogRoll", sources_url(format: "opml"))
 
       for entry in entries
         xml.item do
