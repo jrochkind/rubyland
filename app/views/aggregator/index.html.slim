@@ -8,9 +8,14 @@
       li = link_to titles_only_path do
         i.fa.fa-list-ul
         |  Titles Only
+    li = link_to "https://twitter.com/rubylandnews" do
+      i.fa.fa-twitter
+      span.long-label  Twitter
+      span.short-label  TWTR
     li = link_to rubyland_rss_path do
       i.fa.fa-rss
-      |  RSS Feed
+      span.long-label  RSS Feed
+      span.short-label  RSS
 
 .entries class=('titles-only' if titles_only?)
   - cache(view_cache_key) do

@@ -92,3 +92,18 @@ $sidebarMargin: 1rem;
     margin-right: $sidebarMargin + $sidebarMargin + $sidebarWidth;
   }
 }
+
+// Shorter controls labels on small screens
+.controls .long-label {
+  display: none;
+}
+@media (min-width: rem-to-pixels(20rem)) {
+  .controls {
+    .short-label {
+      display: none;
+    }
+    .long-label {
+      display: initial;
+    }
+  }
+}
