@@ -6,7 +6,7 @@ namespace :feeds do
         url = (url || "").chomp.sub(%r{\#.*\z}, '').strip
         next if url.blank?
 
-        Feed.find_or_create_by!(feed_url: url)
+        Feed.find_or_create_by!(feed_url: url, status: "approved")
       end
     end
   end

@@ -1,4 +1,6 @@
 class Feed < ApplicationRecord
+  enum status: %w{suggested approved rejected suspended}.collect { |a| [a,a] }.to_h
+
   enum fetch_status: %w{not_yet_attempted ok not_modified error}.collect { |a| [a,a] }.to_h,  
     _prefix: 'fetch'
   # note, enum above will creates scopes Feed.fetch_error etc
