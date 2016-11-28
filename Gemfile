@@ -39,6 +39,7 @@ gem 'momentjs-rails', '~> 2.0'
 # https://github.com/sferik/twitter/issues/789
 # https://github.com/sferik/twitter/pull/779
 gem 'twitter', '~> 5.0', git: "https://github.com/sferik/twitter.git"
+gem "clearance", '~> 1.0'
 
 # New relic docs suggest we shouldn't really need to add this
 # on heroku, but let's try it...
