@@ -44,7 +44,7 @@ class FeedUpdater
 
     if twitter_update
       entries.each do |entry|
-        EntryTweeter.new(entry).update if entry.tweet_id.blank?
+        EntryTweeter.new(entry).update if entry.tweet_id.blank? && (entry.datetime > Time.now - 3.days)
       end
     end
 
