@@ -36,7 +36,7 @@ class EntryTweeter
   end
 
   def tweet_txt
-    "#{entry.feed.title} / #{limited_title} #{entry.url}"
+    "#{entry.feed.title} ▶ #{limited_title} #{entry.url}"
   end
 
   def limited_title
