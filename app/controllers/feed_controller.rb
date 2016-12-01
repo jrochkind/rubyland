@@ -1,4 +1,6 @@
 class FeedController < ApplicationController
+  before_action :require_login, except: [:index, :new, :create]
+
   def index
     if Rails.env.production? || ENV['HTTP_CACHING']
       fresh_when etag: etag

@@ -43,3 +43,11 @@
     }
   }
 }
+.suggest {
+  font-family: $font-family-sans-serif;
+  @extend %card;
+  .suggest-form {
+    @extend .form-inline;
+    @extend %caps-em;
+  }
+}

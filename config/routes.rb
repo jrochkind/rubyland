@@ -8,5 +8,5 @@ Rails.application.routes.draw do
 
   get "/about", to: "aggregator#about", as: :about
 
-  get "/sources", to: "feed#index", as: :sources
+  resources :sources, controller: :feed
 end
