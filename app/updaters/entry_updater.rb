@@ -53,7 +53,7 @@ class EntryUpdater
       # give it present time so it will sort better/more recent.
       now_utc = Time.now.utc
       now = Time.now
-      if [date.hour, date.min, date.sec] == [0,0,0] && [now_utc.to_date, now.to_date].include? date.utc.to_date
+      if [date.hour, date.min, date.sec] == [0,0,0] && [now_utc.to_date, now.to_date].include?(date.utc.to_date)
         Time.utc(date.year, date.month, date.day,
                  now_utc.hour, now_utc.min, now_utc.sec)
       else
