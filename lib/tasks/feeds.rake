@@ -13,12 +13,15 @@ namespace :feeds do
 
   desc "update feeds"
   task :update => :environment do
-    # default refresh blank, twitter_update true. 
+    # default refresh blank, twitter_update true.
     updater = Updater.new(refresh: (ENV['REFRESH'] ? ENV['REFRESH'].to_sym : :conditional),
                           twitter_update: ENV['TWITTER_UPDATE'] != "false")
 
     if ENV["FEED_ID"].present?
       updater.update_feed_ids(ENV["FEED_ID"].split(",").collect(&:to_i))
+    elsif ENV["FEED_SEARCH"].present?
+      feed_ids = Feed.where("feed_url like :regex OR title like :regex", regex: '%' + ENV["FEED_SEARCH"] + '%').pluck(:id)
+      updater.update_feed_ids(feed_ids)
     else
       updater.update_all
     end
