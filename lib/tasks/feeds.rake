@@ -27,4 +27,14 @@ namespace :feeds do
     end
   end
 
+  desc "show feeds"
+  task :show => :environment do
+    pp Feed.where("feed_url like :regex OR title like :regex", regex: '%' + ENV["FEED_SEARCH"] + '%').all
+  end
+
+  desc "add feed by feed_url"
+  task :add, [:feed_url] => :environment do |t, args|
+    pp Feed.create!(feed_url: args[:feed_url])
+  end
+
 end
