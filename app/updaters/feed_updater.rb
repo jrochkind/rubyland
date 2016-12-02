@@ -21,6 +21,10 @@ class FeedUpdater
       db_feed.mark_success(:not_modified)
       db_feed.save!
       return
+    elsif response.status == 301
+      # permanent redirect, new URL, update in DB. 
+      db_feed.feed_url = response.headers["Location"]
+      response = fetch
     end
 
     feed = Feedjira::Feed.parse response.to_s
