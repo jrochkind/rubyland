@@ -37,4 +37,9 @@ namespace :feeds do
     pp Feed.create!(feed_url: args[:feed_url])
   end
 
+  desc "delete feed by ID"
+  task :delete, [:feed_id] => :environment do |t, args|
+    Feed.find(args[:feed_id]).destroy
+  end
+
 end
