@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="dns-prefetch" href="//fonts.googleapis.com/">
     <%= render 'application/favicon' %>
 
     <%= auto_discovery_link_tag :rss, rubyland_rss_url, title: "Rubyland Aggregated RSS" %>
@@ -12,10 +12,9 @@
     <title>Rubyland</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= stylesheet_link_tag '//fonts.googleapis.com/css?family=Fira+Sans:light,regular,medium,bold|Anonymous+Pro', media: 'all' %>
-
     <%= javascript_include_tag 'application', defer: true %>
+    <%= stylesheet_link_tag '//fonts.googleapis.com/css?family=Fira+Sans:light,regular,medium,bold|Anonymous+Pro', media: 'all' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
 
   <body>

@@ -21,6 +21,10 @@ class FeedUpdater
       db_feed.mark_success(:not_modified)
       db_feed.save!
       return
+    elsif response.status == 301
+      # permanent redirect, new URL, update in DB. 
+      db_feed.feed_url = response.headers["Location"]
+      response = fetch
     end
 
     feed = Feedjira::Feed.parse response.to_s
@@ -44,7 +48,7 @@ class FeedUpdater
 
     if twitter_update
       entries.each do |entry|
-        EntryTweeter.new(entry).update if entry.tweet_id.blank?
+        EntryTweeter.new(entry).update if entry.tweet_id.blank? && (entry.datetime > Time.now - 3.days)
       end
     end
 

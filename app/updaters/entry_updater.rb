@@ -13,7 +13,7 @@ class EntryUpdater
     db_entry.url = get_url(feedjira_entry)
     db_entry.prepared_body = prepare_body(feedjira_entry, base_url: db_entry.url)
 
-    db_entry.datetime = get_datetime(feedjira_entry, cached: db_entry.datetime)
+    set_datetime(db_entry, feedjira_entry)
 
     db_entry
   end
@@ -40,24 +40,42 @@ class EntryUpdater
     return url
   end
 
-  def get_datetime(feedjira_entry, cached: nil)
-    # prefer `published`, if we have one update it if it changes. Otherwise, use last_modified
-    # or Now, but cache first one forever.
-    datetime = feedjira_entry.published || cached || feedjira_entry.last_modified
+  def set_datetime(db_entry, feedjira_entry)
+    # Previous version let feeds update their published date, but
+    # for now more important to assign some minutes to 00:00:00 ones,
+    # haven't combined em both yet. 
+    return db_entry if db_entry.datetime
+
+    date = feedjira_entry.published || feedjira_entry.last_modified
+
+    date = date.try do |date|
+      # If it has 00:00:00 GMT time, it probably doesn't really have a time, if it's TODAY
+      # give it present time so it will sort better/more recent.
+      now_utc = Time.now.utc
+      now = Time.now
+      if [date.hour, date.min, date.sec] == [0,0,0] && [now_utc.to_date, now.to_date].include?(date.utc.to_date)
+        Time.utc(date.year, date.month, date.day,
+                 now_utc.hour, now_utc.min, now_utc.sec)
+      else
+        date
+      end
+    end
 
     # Still don't have it? Stupid workaround for rubytogether's lack of date but embedding it
     # in id, gah.
-    if datetime.nil? && feedjira_entry.entry_id =~ /(\d\d\d\d)-(\d\d)-(\d\d)/
+    if date.nil? && feedjira_entry.entry_id =~ /(\d\d\d\d)-(\d\d)-(\d\d)/
       year, month, date = $1.to_i, $2.to_i, $3.to_i
       if (2015..2100).cover?(year) && (1..12).cover?(month) && (1..31).cover?(date)
-        datetime = Date.new(year, month, date)
+        date = Date.new(year, month, date)
       end
     end
 
     # last resort
-    datetime ||= Time.now
+    date ||= Time.now
 
-    return datetime
+    db_entry.datetime = date
+
+    return db_entry
   end
 
   def prepare_body(feedjira_entry, base_url: )

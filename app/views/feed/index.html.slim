@@ -34,8 +34,9 @@
               span class=class_for_feed_status(feed)
                 = feed.fetch_status
             .last-fetch-info-cell.datetime-ago
-              = time_ago_in_words(feed.last_fetch_at)
-              |  ago
+              - if feed.last_fetch_at
+                = time_ago_in_words(feed.last_fetch_at)
+                |  ago
             .last-fetch-info-cell.datetime
               = feed.last_fetch_at.to_s
           -if feed.latest_entry_title
