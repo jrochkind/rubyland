@@ -40,7 +40,7 @@ class EntryUpdater
     return url
   end
 
-  def set_datetime(db_entry, feedjira_entry)
+ def set_datetime(db_entry, feedjira_entry)
     # Previous version let feeds update their published date, but
     # for now more important to assign some minutes to 00:00:00 ones,
     # haven't combined em both yet. 
@@ -52,8 +52,9 @@ class EntryUpdater
       # If it has 00:00:00 GMT time, it probably doesn't really have a time, if it's TODAY
       # give it present time so it will sort better/more recent.
       now_utc = Time.now.utc
-      now = Time.now
-      if [date.hour, date.min, date.sec] == [0,0,0] && [now_utc.to_date, now.to_date].include?(date.utc.to_date)
+      now_pacific = Time.now.in_time_zone("Pacific Time (US & Canada)")
+      now_eastern = Time.now.in_time_zone("Eastern Time (US & Canada)")
+      if [date.hour, date.min, date.sec] == [0,0,0] && [now_utc.to_date, now_eastern.to_date, now_pacific.to_date].include?(date.utc.to_date)
         Time.utc(date.year, date.month, date.day,
                  now_utc.hour, now_utc.min, now_utc.sec)
       else
