@@ -49,14 +49,14 @@ class EntryUpdater
     date = feedjira_entry.published || feedjira_entry.last_modified
 
     date = date.try do |date|
+      byebug
       # If it has 00:00:00 GMT time, it probably doesn't really have a time, if it's TODAY
       # give it present time so it will sort better/more recent.
       now_utc = Time.now.utc
       now_pacific = Time.now.in_time_zone("Pacific Time (US & Canada)")
       now_eastern = Time.now.in_time_zone("Eastern Time (US & Canada)")
       if [date.hour, date.min, date.sec] == [0,0,0] && [now_utc.to_date, now_eastern.to_date, now_pacific.to_date].include?(date.utc.to_date)
-        Time.utc(date.year, date.month, date.day,
-                 now_utc.hour, now_utc.min, now_utc.sec)
+        now_utc
       else
         date
       end
