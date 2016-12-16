@@ -49,7 +49,6 @@ class EntryUpdater
     date = feedjira_entry.published || feedjira_entry.last_modified
 
     date = date.try do |date|
-      byebug
       # If it has 00:00:00 GMT time, it probably doesn't really have a time, if it's TODAY
       # give it present time so it will sort better/more recent.
       now_utc = Time.now.utc
