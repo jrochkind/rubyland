@@ -1,6 +1,9 @@
 
 
 class EntryUpdater
+  include ActionView::Helpers::TagHelper # for content_tag
+  include ActionView::Helpers::UrlHelper # for link_to
+
   attr_reader :db_feed, :feedjira_entry
   def initialize(db_feed, feedjira_entry)
     @db_feed, @feedjira_entry = db_feed, feedjira_entry
@@ -79,6 +82,8 @@ class EntryUpdater
   end
 
   def prepare_body(feedjira_entry, base_url: )
-    BodyScrubber.new(feedjira_entry, base_url: base_url).prepare
+    label = "Originally appeared on ".html_safe + link_to(db_feed.title, db_feed.url) + ".".html_safe
+    content_tag("p", label, class: "rubyland-attribution", data: { rubyland_attribution: true }) +
+      BodyScrubber.new(feedjira_entry, base_url: base_url).prepare
   end
 end
