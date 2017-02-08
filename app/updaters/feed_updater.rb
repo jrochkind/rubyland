@@ -3,6 +3,9 @@ class FeedUpdater
   class_attribute :max_fetch_entries
   self.max_fetch_entries = 100
 
+  class_attribute :max_redirects
+  self.max_redirects = 8
+
   attr_reader :db_feed, :refresh, :twitter_update
 
   # if refresh: :hard, then do NOT do conditional http get,
@@ -15,16 +18,14 @@ class FeedUpdater
   end
 
   def update
-    response = fetch
+    response, new_url = fetch
 
-    if response.status == 304
+    db_feed.feed_url = new_url if new_url
+
+    if response.status == 304 # not_modified
       db_feed.mark_success(:not_modified)
       db_feed.save!
       return
-    elsif response.status == 301
-      # permanent redirect, new URL, update in DB. 
-      db_feed.feed_url = response.headers["Location"]
-      response = fetch
     end
 
     feed = Feedjira::Feed.parse response.to_s
@@ -67,7 +68,7 @@ class FeedUpdater
     santize(content)
   end
 
-  # Returns a http.rb resposne
+  # Returns a http.rb response, and a (new url or nil)
   def fetch
     headers = {
       "User-Agent" => "#{HTTP::Request::USER_AGENT} (rubyland aggregator)"
@@ -82,7 +83,29 @@ class FeedUpdater
       end
     end
 
-    HTTP.headers(headers).get(feed_url)
+    # Loop redirects, marking new permanent url if all 304s
+    tries = 0
+    fetch_url = feed_url
+    new_url = nil
+    response = nil
+    permanent_new_url = nil
+    all_301s = true
+
+    while tries < max_redirects
+      tries += 1
+      response = HTTP.headers(headers).get(fetch_url)
+
+      if HTTP::Redirector::REDIRECT_CODES.include? response.status
+        if response.status != 301
+          all_301s = false
+        end
+        fetch_url = response.headers["Location"]
+      else
+        break
+      end
+    end
+
+    return response, (tries > 1 && all_301s ? fetch_url : nil)
   end
 
   class BadHttpStatus < StandardError
