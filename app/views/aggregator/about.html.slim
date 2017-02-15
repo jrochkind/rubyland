@@ -13,9 +13,9 @@
 
   .about
     h2
-    p 
-      i First deployed November 2016, more features planned. Your feedback is welcome! 
-    p 
+    p
+      i First deployed November 2016, more features planned. Your feedback is welcome!
+    p
       | A project by Jonathan Rochkind.
       '
       = link_to "http://github.com/jrochkind", class: 'shortlink' do
@@ -24,26 +24,34 @@
       = link_to "http://bibwild.wordpress.com", class: 'shortlink'
         i.fa.fa-external-link
         |  Blog
-    p 
+    p
       | There have been several ruby and Rails feed aggregators in the past, but
-      |   none were still functional and maintained. 
+      |   none were still functional and maintained.
       |  I missed them, and I thought a good aggregator could help increase cohesion of
       |  the ruby community. So I built this as a spare-time side project.
     p
       | I intend <em>Rubyland</em> as
       |  a more contemporary iteration of 'planet'-style aggregation, which I think
-      |  still serves a use despite social aggregator sites. 
+      |  still serves a use despite social aggregator sites.
     p
       | <em>Rubyland</em> runs on a free <a href="heroku.com">heroku</a> hobby-dev dyno, with a free hobby postgres. It can get
-      |  get away with that because it's mostly cached content. This is also why there's no `https`. 
+      |  get away with that because it's mostly cached content. This is also why there's no `https`.
       |  But perhaps your company is intereted
       |  in sponsoring <em>Rubyland</em> to give me back my free dyno hours for other projects and make
       |  more resource-intensive features possible?
 
     p The source code of <em>Rubyland</em> is open source, and available #{link_to 'on Github', 'https://github.com/jrochkind/rubyland'}
 
+    h2 Infrastructure
+    p <em>Rubyland</em> runs on:
+    ul
+      li one free heroku dyno, with free heroku postgres Hobby Dev.
+      li namecheap domain registrar
+      li cloudflare free DNS
+      li mailgun free account for MX server. (registered directly at mailgun.com gives you somewhat higher limits/features than heroku add-on free tier)
+
     h2 Suggest a Source
-    p 
+    p
       | A form to suggest new sources is planned, but not yet available. Please feel free to contact
       |  me at <a href="mailto:jonathan@rubyland.news">jonathan@rubyland.news</a>.
 
