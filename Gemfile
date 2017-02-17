@@ -44,13 +44,6 @@ gem 'twitter', '~> 5.0', git: "https://github.com/sferik/twitter.git"
 # on heroku, but let's try it...
 gem 'newrelic_rpm'
 
-# letsencrypt-rails-heroku: Until the new API calls are generally available, you must manually specify my fork
-# of the Heroku API gem:
-# and a fork of the fork, from:
-# https://github.com/jalada/platform-api/pull/1
-gem 'platform-api', git: 'https://github.com/tgmerritt/platform-api/', branch: 'master'
-gem 'letsencrypt-rails-heroku', group: 'production'
-
 source 'https://rails-assets.org' do
   gem 'rails-assets-fetch', '~> 1.0'
 end
