@@ -15,7 +15,7 @@ cache(view_cache_key) do
         xml.item do
           xml.title(entry.title)
           xml.source(entry.feed.title, url: entry.feed.url)
-          xml.description(entry.prepared_body)
+          xml.description(rss_body(entry))
           xml.pubDate(entry.datetime.utc.rfc2822)
           xml.guid(entry.entry_id, isPermaLink: absolute_http_url?(entry.entry_id))
           xml.link(entry.url)
