@@ -28,6 +28,8 @@ gem 'uglifier', '>= 1.3.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'honeybadger', '~> 2.0'
+
 gem 'feedjira', '~> 2.0'
 gem 'slim-rails', '~> 3.0'
 gem 'addressable', '~> 2.4'

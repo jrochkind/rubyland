@@ -101,6 +101,7 @@ GEM
       erubis (~> 2.0)
       excon
       multi_json (>= 1.9.2)
+    honeybadger (2.7.2)
     http (2.0.3)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -223,6 +224,7 @@ DEPENDENCIES
   byebug
   feedjira (~> 2.0)
   font-awesome-rails (~> 4.7)
+  honeybadger (~> 2.0)
   http (~> 2.0)
   letsencrypt-rails-heroku
   listen (~> 3.0.5)
