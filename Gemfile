@@ -40,7 +40,7 @@ gem 'momentjs-rails', '~> 2.0'
 # Need direct to git to get one that allows http 2.x, bah
 # https://github.com/sferik/twitter/issues/789
 # https://github.com/sferik/twitter/pull/779
-gem 'twitter', '~> 5.0', git: "https://github.com/sferik/twitter.git"
+gem 'twitter', '~> 6.0'
 
 # New relic docs suggest we shouldn't really need to add this
 # on heroku, but let's try it...
