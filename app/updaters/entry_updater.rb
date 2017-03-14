@@ -7,7 +7,8 @@ class EntryUpdater
   end
 
   def build
-    db_entry = Entry.find_or_initialize_by(feed: db_feed, entry_id: feedjira_entry.entry_id)
+    # some feeds illegally do not include an id, bah, we'll use the url if we can.
+    db_entry = Entry.find_or_initialize_by(feed: db_feed, entry_id: feedjira_entry.entry_id || feedjira_entry.url)
 
     db_entry.title = feedjira_entry.title.try(:scrub)
     db_entry.url = get_url(feedjira_entry)
