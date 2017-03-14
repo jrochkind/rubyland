@@ -44,7 +44,7 @@ class EntryUpdater
  def set_datetime(db_entry, feedjira_entry)
     # Previous version let feeds update their published date, but
     # for now more important to assign some minutes to 00:00:00 ones,
-    # haven't combined em both yet. 
+    # haven't combined em both yet.
     return db_entry if db_entry.datetime
 
     date = feedjira_entry.published || feedjira_entry.last_modified
