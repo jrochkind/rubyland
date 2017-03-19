@@ -35,7 +35,9 @@ class FeedUpdater
 
     db_feed.title = feed.title
     db_feed.description = feed.description
-    db_feed.url = feed.url
+
+    # some feeds use relative urls! so wrong ruby together.
+    db_feed.url = Addressable::URI.parse(db_feed.feed_url) + Addressable::URI.parse(feed.url)
 
     entries = feed.entries.slice(0, max_fetch_entries).collect do |entry|
       EntryUpdater.new(db_feed, entry).build
