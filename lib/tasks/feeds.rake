@@ -34,7 +34,12 @@ namespace :feeds do
 
   desc "add feed by feed_url"
   task :add, [:feed_url] => :environment do |t, args|
-    pp Feed.create!(feed_url: args[:feed_url])
+    if existing = Feed.where(feed_url: args[:feed_url]).first
+      puts "Feed already exists\n\n"
+      pp existing
+    else
+      pp Feed.create!(feed_url: args[:feed_url])
+    end
   end
 
   desc "delete feed by ID"
