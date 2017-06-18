@@ -9,7 +9,7 @@ cache(view_cache_key) do
     end
     xml.body do
       feeds.each do |feed|
-        xml.outline text: feed.title, xmlUrl: feed.feed_url, url: feed.url
+        xml.outline text: feed.title, xmlUrl: feed.feed_url, url: feed.url, created: feed.created_at.try(:iso8601)
       end
     end
   end
