@@ -8,7 +8,7 @@ class EntryUpdater
 
   def build
     # some feeds illegally do not include an id, bah, we'll use the url if we can.
-    db_entry = Entry.find_or_initialize_by(feed: db_feed, entry_id: feedjira_entry.entry_id || feedjira_entry.url)
+    db_entry = Entry.find_or_initialize_by(feed: db_feed, entry_id: feedjira_entry.entry_id || feedjira_entry.url.try(:strip))
 
     db_entry.title = feedjira_entry.title.try(:scrub)
     db_entry.url = get_url(feedjira_entry)
@@ -27,7 +27,8 @@ class EntryUpdater
   protected
 
   def get_url(feedjira_entry)
-    url = feedjira_entry.url.try(:scrub)
+    # some return urls with newlines, grr devonestes
+    url = feedjira_entry.url.try(:scrub).try(:strip)
     # Some feeds delivery entries actually missing the url
     return nil unless url
 

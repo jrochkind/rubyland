@@ -37,8 +37,9 @@ class FeedUpdater
     db_feed.description = feed.description
 
     # some feeds use relative urls! so wrong ruby together.
+    # And some return a feed.url with newlines and empty space in them, grr devonestes
     if feed.url.present?
-      db_feed.url = Addressable::URI.parse(db_feed.feed_url) + Addressable::URI.parse(feed.url)
+      db_feed.url = Addressable::URI.parse(db_feed.feed_url) + Addressable::URI.parse(feed.url.try(:strip))
     end
 
     entries = feed.entries.slice(0, max_fetch_entries).collect do |entry|
