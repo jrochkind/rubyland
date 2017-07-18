@@ -72,8 +72,27 @@ class EntryUpdater
       end
     end
 
-    # last resort
-    date ||= Time.now
+    # After all that, still really can't trust the date set in feeds.
+    # If we have a recentish last-scrape date, and the date the feed
+    # reported doesn't fall in between then and now, just call it
+    # 'now', so our aggregated feed will have recent at the top.
+    now = Time.zone.now
+    last_fetch = db_entry.try(:feed).try(:last_fetch_at)
+
+    if date && last_fetch &&
+        # last fetch not TOO long ago:
+        last_fetch >= 1.day.ago &&
+        # date not in expected window:
+        (date < db_entry.feed.last_fetch_at) &&
+        # but date not TOO far out of expected window
+        (date > (last_fetch - 7.days))
+      date = now
+    end
+
+    if date.nil? || date > now
+      # last resort now, and you can't be in the future buddy
+      date = now
+    end
 
     db_entry.datetime = date
 
