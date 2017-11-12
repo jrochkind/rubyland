@@ -1,17 +1,7 @@
-GIT
-  remote: https://github.com/jalada/platform-api
-  revision: 4a06e57bd32d805248f3b8e1358ed4833296c659
-  branch: master
-  specs:
-    platform-api (0.8.0)
-      heroics (~> 0.0.17)
-
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
   specs:
-    acme-client (0.4.1)
-      faraday (~> 0.9, >= 0.9.1)
     actioncable (5.1.4)
       actionpack (= 5.1.4)
       nio4r (~> 2.0)
@@ -68,8 +58,6 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     equalizer (0.0.11)
     erubi (1.7.0)
-    erubis (2.7.0)
-    excon (0.59.0)
     execjs (2.7.0)
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
@@ -85,11 +73,6 @@ GEM
       railties (>= 3.2, < 5.2)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    heroics (0.0.24)
-      erubis (~> 2.0)
-      excon
-      moneta
-      multi_json (>= 1.9.2)
     honeybadger (3.1.2)
     http (2.2.2)
       addressable (~> 2.3)
@@ -102,9 +85,6 @@ GEM
     http_parser.rb (0.6.0)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
-    letsencrypt-rails-heroku (1.2.0)
-      acme-client (~> 0.4.0)
-      platform-api
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -121,8 +101,6 @@ GEM
     minitest (5.10.3)
     momentjs-rails (2.17.1)
       railties (>= 3.1)
-    moneta (1.0.0)
-    multi_json (1.12.2)
     multipart-post (2.0.0)
     naught (1.1.0)
     newrelic_rpm (4.5.0.337)
@@ -232,12 +210,10 @@ DEPENDENCIES
   font-awesome-rails (~> 4.7)
   honeybadger (~> 3.0)
   http (~> 2.0)
-  letsencrypt-rails-heroku
   listen (~> 3.0.5)
   momentjs-rails (~> 2.0)
   newrelic_rpm
   pg (~> 0.18)
-  platform-api!
   puma (~> 3.0)
   rails (~> 5.1.0)
   rails-assets-fetch (~> 1.0)!
