@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby File.read(File.join(__dir__, ".ruby-version")).chomp
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+gem 'rails', '~> 5.1.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -33,7 +33,8 @@ gem 'honeybadger', '~> 3.0'
 gem 'feedjira', '~> 2.0'
 gem 'slim-rails', '~> 3.0'
 gem 'addressable', '~> 2.4'
-gem 'bootstrap', '>= 4.0.0.alpha5', '< 4.1'
+# backwards breaking changes in bootstrap 4 betas and final, will have to fix
+gem 'bootstrap', '4.0.0.alpha5'
 gem 'http', '~> 2.0'
 gem "font-awesome-rails", '~> 4.7'
 gem 'momentjs-rails', '~> 2.0'
@@ -45,11 +46,6 @@ gem 'twitter', '~> 6.0'
 # New relic docs suggest we shouldn't really need to add this
 # on heroku, but let's try it...
 gem 'newrelic_rpm'
-
-# letsencrypt-rails-heroku: Until the new API calls are generally available, you must manually specify my fork
-# of the Heroku API gem:
-gem 'platform-api', git: 'https://github.com/jalada/platform-api', branch: 'master'
-gem 'letsencrypt-rails-heroku', group: 'production'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-fetch', '~> 1.0'

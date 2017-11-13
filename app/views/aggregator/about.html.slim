@@ -37,20 +37,19 @@
     p The source code of <em>Rubyland</em> is open source, and available #{link_to 'on Github', 'https://github.com/jrochkind/rubyland'}
 
     h2 Sponsors
-    .sponsors 
+    .sponsors
       p = link_to "https://www.honeybadger.io/?utm_source=rubyland&utm_medium=sponsorship" do
         - image_tag "honeybadger_logo.svg", height: '24px', style: 'margin-top: 1rem;'
-      p.sponsor-text <em>Rubyland</em> is sponsored by <a href="https://www.honeybadger.io/?utm_source=rubyland&utm_medium=sponsorship">Honeybadger</a>, at $20/month to help me pay for heroku and other infrastructure costs. 
-      I use Honeybadger for both rubyland and a day-job project, and find it very useful. Honeybadger says:
+      p.sponsor-text <em>Rubyland</em> is sponsored by <a href="https://www.honeybadger.io/?utm_source=rubyland&utm_medium=sponsorship">Honeybadger</a>, at $20/month to help me pay for heroku and other infrastructure costs. I use Honeybadger for both rubyland and a day-job project, and find it very useful. Honeybadger says:
       blockquote.blockquote.sponsor-text Honeybadger helps you provide an awesome experience to your customers by letting you know when they have problems with your app.  Use Honeybadger to get details about the errors that happen in your app, and get them fixed before anybody notices. :)
 
-      p More sponsors welcome! More sponsorship would allow more heroku infrastructure supporting more resource-intensive features. 
+      p More sponsors welcome! More sponsorship would allow more heroku infrastructure supporting more resource-intensive features.
 
     h2 Infrastructure
     p <em>Rubyland</em> runs on:
     ul
       li one heroku 'hobby' dyno, with free heroku postgres Hobby Dev. Rubyland can get away with only one small dyno, because it's mostly cached content. (A free dyno would have worked, but the paid hobby dyno gives us SSL on our custom hostname. Thanks to our sponsor for covering the cost.)
-      li | (experimental) SSL cert from <a href="https://letsencrypt.org/">letsencrypt.org</a>, automated with <a href="https://github.com/pixielabs/letsencrypt-rails-heroku">letsencrypt-rails-heroku</a>. Not sure if we'll stick with the SSL, you still get mixed content warnings on main page, and if I lose sponsorship I'll go back to a free heroku dyno that does not support SSL on custom domain names. 
+      li | (experimental) SSL cert from <a href="https://letsencrypt.org/">letsencrypt.org</a>, automated with <a href="https://github.com/pixielabs/letsencrypt-rails-heroku">letsencrypt-rails-heroku</a>. Not sure if we'll stick with the SSL, you still get mixed content warnings on main page, and if I lose sponsorship I'll go back to a free heroku dyno that does not support SSL on custom domain names.
       li namecheap domain registrar
       li cloudflare free DNS
       li mailgun free account for MX server for @rubyland.news, and SMTP for admin alerts from app. (registered directly at mailgun.com gives you somewhat higher limits/features than heroku add-on free tier)
