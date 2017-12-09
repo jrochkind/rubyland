@@ -49,7 +49,6 @@
     p <em>Rubyland</em> runs on:
     ul
       li one heroku 'hobby' dyno, with free heroku postgres Hobby Dev. Rubyland can get away with only one small dyno, because it's mostly cached content. (A free dyno would have worked, but the paid hobby dyno gives us SSL on our custom hostname. Thanks to our sponsor for covering the cost.)
-      li | (experimental) SSL cert from <a href="https://letsencrypt.org/">letsencrypt.org</a>, automated with <a href="https://github.com/pixielabs/letsencrypt-rails-heroku">letsencrypt-rails-heroku</a>. Not sure if we'll stick with the SSL, you still get mixed content warnings on main page, and if I lose sponsorship I'll go back to a free heroku dyno that does not support SSL on custom domain names.
       li namecheap domain registrar
       li cloudflare free DNS
       li mailgun free account for MX server for @rubyland.news, and SMTP for admin alerts from app. (registered directly at mailgun.com gives you somewhat higher limits/features than heroku add-on free tier)
