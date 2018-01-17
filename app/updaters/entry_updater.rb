@@ -40,6 +40,8 @@ class EntryUpdater
     end
 
     return url
+  rescue Addressable::URI::InvalidURIError => e
+    return nil
   end
 
  def set_datetime(db_entry, feedjira_entry)
