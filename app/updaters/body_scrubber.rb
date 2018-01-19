@@ -95,7 +95,7 @@ class BodyScrubber
     end
 
     def resolve(url)
-      unless url.present?
+      unless url.present? && base_url.present?
         # let's not touch an empty string or nil, although
         # I'm not completely sure that's right.
         return url
