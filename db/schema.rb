@@ -15,34 +15,33 @@ ActiveRecord::Schema.define(version: 20161125191419) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "entries", force: :cascade do |t|
-    t.string   "entry_id",                      null: false
-    t.string   "title"
-    t.text     "prepared_body"
-    t.string   "url"
+  create_table "entries", id: :serial, force: :cascade do |t|
+    t.string "entry_id", null: false
+    t.string "title"
+    t.text "prepared_body"
+    t.string "url"
     t.datetime "datetime"
-    t.integer  "feed_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.boolean  "hidden",        default: false
-    t.string   "tweet_id"
-    t.index ["entry_id"], name: "index_entries_on_entry_id", unique: true, using: :btree
-    t.index ["feed_id"], name: "index_entries_on_feed_id", using: :btree
+    t.integer "feed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "tweet_id"
+    t.index ["entry_id"], name: "index_entries_on_entry_id", unique: true
+    t.index ["feed_id"], name: "index_entries_on_feed_id"
   end
 
-  create_table "feeds", force: :cascade do |t|
-    t.string   "title"
-    t.string   "description"
-    t.string   "feed_url",                                         null: false
-    t.string   "url"
+  create_table "feeds", id: :serial, force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "feed_url", null: false
+    t.string "url"
     t.datetime "last_fetch_at"
-    t.string   "fetch_status",       default: "not_yet_attempted"
-    t.json     "fetch_error_info"
-    t.string   "http_etag"
-    t.string   "http_last_modified"
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
-    t.index ["feed_url"], name: "index_feeds_on_feed_url", unique: true, using: :btree
+    t.string "fetch_status", default: "not_yet_attempted"
+    t.json "fetch_error_info"
+    t.string "http_etag"
+    t.string "http_last_modified"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feed_url"], name: "index_feeds_on_feed_url", unique: true
   end
 
 end

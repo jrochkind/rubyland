@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby File.read(File.join(__dir__, ".ruby-version")).chomp
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -46,6 +46,8 @@ gem 'twitter', '~> 6.0'
 # New relic docs suggest we shouldn't really need to add this
 # on heroku, but let's try it...
 gem 'newrelic_rpm'
+
+gem "bootsnap", ">= 1.1.0", require: false
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-fetch', '~> 1.0'
