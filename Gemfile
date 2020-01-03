@@ -34,7 +34,7 @@ gem 'feedjira', '~> 2.0'
 gem 'slim-rails', '~> 3.0'
 gem 'addressable', '~> 2.4'
 # backwards breaking changes in bootstrap 4 betas and final, will have to fix
-gem 'bootstrap', '4.0.0.alpha5'
+gem 'bootstrap', '4.3.1'
 gem 'http', '~> 2.0'
 gem "font-awesome-rails", '~> 4.7'
 gem 'momentjs-rails', '~> 2.0'
