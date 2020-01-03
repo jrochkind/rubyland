@@ -28,7 +28,7 @@ class FeedUpdater
       return
     end
 
-    feed = Feedjira::Feed.parse response.to_s
+    feed = Feedjira.parse response.to_s
 
     db_feed.http_etag = response["Etag"]
     db_feed.http_last_modified = response["Last-Modified"]
