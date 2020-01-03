@@ -35,13 +35,13 @@ gem 'slim-rails', '~> 3.0'
 gem 'addressable', '~> 2.4'
 # backwards breaking changes in bootstrap 4 betas and final, will have to fix
 gem 'bootstrap', '~> 4.3'
-gem 'http', '~> 2.0'
+gem 'http', '~> 3.0'
 gem "font-awesome-rails", '~> 4.7'
 gem 'momentjs-rails', '~> 2.0'
 # Need direct to git to get one that allows http 2.x, bah
 # https://github.com/sferik/twitter/issues/789
 # https://github.com/sferik/twitter/pull/779
-gem 'twitter', '~> 6.0'
+gem 'twitter', '~> 6.2'
 
 # New relic docs suggest we shouldn't really need to add this
 # on heroku, but let's try it...
