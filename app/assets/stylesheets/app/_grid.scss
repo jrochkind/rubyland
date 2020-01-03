@@ -48,12 +48,12 @@ $sidebarMargin: 1rem;
 // May suggest rem-based layout is a bad idea?
 @function rem-to-pixels($rem) {
   // not sure why adding an extra 1.8rem fudge factor seems necessary
-  @return ceil((($rem + 1.8rem) / 1rem) * $font-size-root);
+  @return ceil((($rem + 1.8rem) / 1rem) * $font-size-factor * 16px);
 }
 
 
 // If we have enough room, bring controls to the side vertically, centering
-// both together next to each other. 
+// both together next to each other.
 @media (min-width: rem-to-pixels($mainColumnWidth + $sidebarWidth + ($sidebarMargin * 3))) {
   .wrapper {
     display: flex;

@@ -58,19 +58,4 @@ $header-spacing: 1em;
   }
 }
 
-.head-alert {
-  width: 100%;
-  background-color: $code-bg;
-  text-align: center;
-  color: transparentize($app-red-color, 0.0);
-  font-family: $font-family-sans-serif;
-  font-weight: 500;
-  padding: .75rem 1.25rem;
-  margin-top: -1rem;
-  position: fixed;
-  bottom: 0;
-  &.visible {
-    //opacity: 0.0;
-    transition:  opacity 3s ease-in-out;
-  }
-}
+

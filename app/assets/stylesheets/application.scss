@@ -17,9 +17,12 @@
 @import "font-awesome";
 
 
-$enable-flex: true;
 // slightly bigger than default 16px
-$font-size-root: 17.6px;
+// Some potentially hacky ways to migrate from bootstrap 4.0.0.alpha3 to a real release
+$font-size-factor: 1.1;
+html {
+  font-size: $font-size-factor * 100%; // 110% of 16px default is 17.6px
+}
 
 $font-family-sans-serif: 'Fira Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 $font-family-special-head: $font-family-sans-serif;
@@ -38,14 +41,17 @@ $link-color: $app-red-color;
 // bootstrap 4 serif
 $font-family-base: Georgia, "Times New Roman", Times, serif;
 
-$font-size-h1: 2.2rem;
-$font-size-h2: 1.6rem !default;
-$font-size-h3: 1.35rem !default;
-$font-size-h4: 1.15rem !default;
-$font-size-h5: 1rem !default;
-$font-size-h6: 1rem !default;
+$h1-font-size: 2.2rem;
+$h2-font-size: 1.6rem !default;
+$h3-font-size: 1.35rem !default;
+$h4-font-size: 1.15rem !default;
+$h5-font-size: 1rem !default;
+$h6-font-size: 1rem !default;
+$headings-line-height: 1.1;
 
 $mainColumnWidth: 36rem;
+
+$font-family-serif: Georgia, "Times New Roman", Times, serif !default;
 
 @import "bootstrap_local";
 
@@ -67,7 +73,7 @@ a:hover, a:focus {
 h1 {
   font-family: $font-family-sans-serif;
   text-transform: uppercase;
-  font-size: $font-size-h1;
+  font-size: $h1-font-size;
 }
 
 h2, h3, h4, h5, h6 {
@@ -211,7 +217,9 @@ h1.page-title {
 }
 
 pre {
-  background-color: $code-bg;
+  font-size: 90%;
+  background-color: #f7f7f9;
+  color: #bd4147;
   margin-left: -1rem;
   margin-right: -1rem;
   padding: 0.5rem 1rem 0.5rem 1rem;
