@@ -236,7 +236,7 @@ PLATFORMS
 
 DEPENDENCIES
   addressable (~> 2.4)
-  bootsnap (>= 1.1.0)
+  bootsnap (>= 1.4.4)
   bootstrap (~> 4.3)
   byebug
   feedjira (~> 3.0)

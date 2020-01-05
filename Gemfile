@@ -47,7 +47,7 @@ gem 'twitter', '~> 6.2'
 # on heroku, but let's try it...
 gem 'newrelic_rpm'
 
-gem "bootsnap", ">= 1.1.0", require: false
+gem "bootsnap", ">= 1.4.4", require: false
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-fetch', '~> 1.0'
