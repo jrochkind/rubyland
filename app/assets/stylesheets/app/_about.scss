@@ -4,6 +4,8 @@
 
     &.blockquote, .blockquote {
       font-size: inherit;
+      border-left: 3px solid $text-muted;
+      padding-left: 0.66rem;
     }
   }
 
