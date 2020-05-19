@@ -46,8 +46,12 @@ class FeedUpdater
       EntryUpdater.new(db_feed, entry).build
     end
 
+    # Some feeds are giving us duplicate id's, standards violating. le sigh,
+    # we'll just silently skip one
+    entries.uniq! { |e| e.entry_id }
+
     Feed.transaction do
-      entries.each(&:save!)
+      entries.each(&:save)
       db_feed.mark_success
       db_feed.save!
     end
