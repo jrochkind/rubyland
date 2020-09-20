@@ -23,7 +23,7 @@ class AggregatorController < ApplicationController
   def view_cache_key
     # cache so the view doesn't have to look it up again, although
     # I think entries.cache_key would prob be cached anyway, but not certain.
-    @view_cache_key ||= [request.format, titles_only?, entries.cache_key]
+    @view_cache_key ||= [request.format, titles_only?, entries]
   end
   helper_method :view_cache_key
 

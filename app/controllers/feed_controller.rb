@@ -25,7 +25,7 @@ class FeedController < ApplicationController
   def view_cache_key
     # cache so the view doesn't have to look it up again, although
     # I think entries.cache_key would prob be cached anyway, but not certain.
-    @view_cache_key ||= [request.format, feeds.cache_key]
+    @view_cache_key ||= [request.format, feeds]
   end
   helper_method :view_cache_key
 
@@ -36,5 +36,5 @@ class FeedController < ApplicationController
     # a lot of things, and involves kind of reverse engineering Rails.
     # This is pretty decent.
     [ENV['SOURCE_VERSION']] + view_cache_key
-  end  
+  end
 end
