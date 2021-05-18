@@ -152,7 +152,7 @@ GEM
     pg (1.2.3)
     popper_js (1.16.0)
     public_suffix (4.0.5)
-    puma (4.3.7)
+    puma (4.3.8)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -253,7 +253,7 @@ DEPENDENCIES
   momentjs-rails (~> 2.0)
   newrelic_rpm
   pg (>= 0.18, < 2.0)
-  puma (~> 4.1)
+  puma (~> 4.3)
   rails (~> 6.0)
   rails-assets-fetch (~> 2.0)!
   sass-rails (~> 6.0)
