@@ -73,7 +73,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (9.7.6)
       execjs
@@ -151,7 +151,7 @@ GEM
       racc (~> 1.4)
     pg (1.2.3)
     popper_js (1.16.0)
-    public_suffix (4.0.5)
+    public_suffix (4.0.6)
     puma (4.3.8)
       nio4r (~> 2.0)
     racc (1.5.2)
@@ -241,7 +241,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  addressable (~> 2.4)
+  addressable (~> 2.8)
   bootsnap (>= 1.4.4)
   bootstrap (~> 4.3)
   byebug
