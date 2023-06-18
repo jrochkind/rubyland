@@ -43,11 +43,10 @@ gem 'http', '~> 4.0'
 gem "font-awesome-rails", '~> 4.7'
 gem 'momentjs-rails', '~> 2.0'
 
-# Twitter gem unmaintained, and was locking us to old version of http
-# that had bugs we had to get rid of. :(
-# https://github.com/sferik/twitter/issues/964
-# Until we stop using it, use a fork...
-gem 'twitter', '~> 6.2', github: "excid3/twitter"
+
+# We only use for posting tweets, lock to specific known working version
+# at the moment?
+gem 'tweetkit', '0.2.0'
 
 # New relic docs suggest we shouldn't really need to add this
 # on heroku, but let's try it...
