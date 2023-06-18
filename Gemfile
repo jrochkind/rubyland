@@ -48,10 +48,6 @@ gem 'momentjs-rails', '~> 2.0'
 # at the moment?
 gem 'tweetkit', '0.2.0'
 
-# New relic docs suggest we shouldn't really need to add this
-# on heroku, but let's try it...
-gem 'newrelic_rpm'
-
 gem "bootsnap", ">= 1.4.4", require: false
 
 require 'rbconfig'

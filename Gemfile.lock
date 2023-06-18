@@ -164,7 +164,6 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
-    newrelic_rpm (9.2.2)
     nio4r (2.5.9)
     nokogiri (1.15.2)
       mini_portile2 (~> 2.8.2)
@@ -275,7 +274,6 @@ DEPENDENCIES
   http (~> 4.0)
   listen (>= 3.0.5)
   momentjs-rails (~> 2.0)
-  newrelic_rpm
   pg (>= 0.18, < 2.0)
   puma (~> 6.0)
   rails (~> 7.0)
