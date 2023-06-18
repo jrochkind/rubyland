@@ -102,7 +102,7 @@ class FeedUpdater
 
     while tries < max_redirects
       tries += 1
-      response = HTTP.headers(headers).get(fetch_url)
+      response = HTTP.use(:auto_inflate).headers(headers).get(fetch_url)
 
       if HTTP::Redirector::REDIRECT_CODES.include? response.status
         if response.status != 301
