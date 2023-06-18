@@ -55,16 +55,6 @@ gem 'newrelic_rpm'
 
 gem "bootsnap", ">= 1.4.4", require: false
 
-source 'https://rails-assets.org' do
-  # This is https://github.com/github/fetch polyfill, via bower.
-  # While there is a 3.x available, it is written in ES6, so won't actually
-  # work in old browsers it's meant to polyfill without a transpile,
-  # which seems odd for a polyfill, not sure how to make sure it's being
-  # properly transpiled in our build setup.
-  # https://github.com/github/fetch/issues/656#issuecomment-420219378
-  gem 'rails-assets-fetch', '~> 2.0'
-end
-
 require 'rbconfig'
 if RbConfig::CONFIG['target_os'] =~ /darwin(1[0-3])/i
   gem 'rb-fsevent', '<= 0.9.4'

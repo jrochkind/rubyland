@@ -12,7 +12,6 @@
 //
 //= require ready
 //= require moment
-//= require fetch
 //= require appear
 //= require fade
 //

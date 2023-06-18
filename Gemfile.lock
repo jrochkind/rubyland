@@ -15,11 +15,6 @@ GIT
       simple_oauth (~> 0.3.0)
 
 GEM
-  remote: https://rails-assets.org/
-  specs:
-    rails-assets-fetch (2.0.4)
-
-GEM
   remote: https://rubygems.org/
   specs:
     actioncable (6.1.7.3)
@@ -271,7 +266,6 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 4.3)
   rails (~> 6.1)
-  rails-assets-fetch (~> 2.0)!
   sass-rails (~> 6.0)
   slim-rails (~> 3.0)
   sprockets (~> 3.0)
