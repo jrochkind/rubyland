@@ -12,7 +12,7 @@ gem 'puma', '~> 6.0'
 gem 'sass-rails', '~> 6.0'
 
 # We haven't upgraded to sprockets 4 yet
-gem "sprockets", "~> 3.0"
+gem "sprockets", "~> 4.0"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
