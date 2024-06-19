@@ -25,7 +25,7 @@ class FeedController < ApplicationController
   def view_cache_key
     # cache so the view doesn't have to look it up again, although
     # I think entries.cache_key would prob be cached anyway, but not certain.
-    @view_cache_key ||= [request.format, feeds]
+    @view_cache_key ||= [request.format.to_s, Feed.order(updated_at: :desc).first.updated_at.utc.rfc3339]
   end
   helper_method :view_cache_key
 
