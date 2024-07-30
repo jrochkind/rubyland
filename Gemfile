@@ -14,8 +14,8 @@ gem 'sass-rails', '~> 6.0'
 # We haven't upgraded to sprockets 4 yet
 gem "sprockets", "~> 4.0"
 
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+# Use terser as compressor for JavaScript assets
+gem 'terser', '~> 1.2'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
