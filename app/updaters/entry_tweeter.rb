@@ -1,5 +1,5 @@
 class EntryTweeter
-  TWITTER_LENGTH_LIMIT = 140
+  TWITTER_LENGTH_LIMIT = 280
 
   attr_reader :entry
 
