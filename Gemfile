@@ -44,9 +44,8 @@ gem "font-awesome-rails", '~> 4.7'
 gem 'momentjs-rails', '~> 2.0'
 
 
-# We only use for posting tweets, lock to specific known working version
-# at the moment?
-gem 'tweetkit', '0.2.0'
+# We only use for posting tweets
+gem 'x', '< 1'
 
 gem "bootsnap", ">= 1.4.4", require: false
 

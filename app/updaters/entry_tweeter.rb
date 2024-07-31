@@ -8,14 +8,13 @@ class EntryTweeter
   end
 
   def client
-    # currently using under-development tweetkit which apparently can do the Twitter
-    # v2 API with Oauth that is now required  -- I don't really understand what's going
-    # on under the hood, but it works.
+    # https://github.com/sferik/x-ruby  with v2 twitter/x api
     #
-    # Don't really know if it's thread-safe, so create a new one per EntryTweeter obj
-    @client ||= Tweetkit::Client.new(
-      consumer_key:         ENV['TWITTER_CONSUMER_KEY'],
-      consumer_secret:      ENV["TWITTER_CONSUMER_SECRET"],
+    # I think it's thread-safe so we could be creating a global obj, but
+    # for now one per EntryTweeter instance
+    @client ||= X::Client.new(
+      api_key:         ENV['TWITTER_CONSUMER_KEY'],
+      api_key_secret:      ENV["TWITTER_CONSUMER_SECRET"],
       access_token:         ENV["TWITTER_ACCESS_TOKEN"],
       access_token_secret:  ENV["TWITTER_ACCESS_TOKEN_SECRET"]
     )
@@ -30,7 +29,7 @@ class EntryTweeter
   # would be very bad, we err on the side of not tweeting if anything looks amiss.
   #
   # We try to log lots of errors resulting no tweet made -- we do not currently ever
-  # raise, for instance so HoneyBadger might notice and alert. Should we?
+  # raise, so at present for instance HoneyBadger will not notice and alert. Should we?
   def update
     unless credentials?
       error_log("We don't seem to have credentails to tweet entry #{entry.id}")
@@ -49,27 +48,21 @@ class EntryTweeter
       return false
     end
 
-    tweet_result = client.post_tweet(text: tweet_txt )
+    tweet_result = client.post("tweet", { text: tweet_txt })
 
-    # pretty ridiculous trying to check for success
-    #
-    # https://github.com/julianfssen/tweetkit/issues/15
-    #
-    if (tweet_result.response["status"] && tweet_result.response["status"] != 200) || tweet_result.response["data"].blank?
-      error_log("Did not succesfully tweet entry #{entry.id}, #{tweet_result.response}")
-      return false
-    end
-
-
-    tweet_id = tweet_result.response&.dig("data", "id")
-    entry.update!(tweet_id: (tweet_id || "could_not_find"))
+    tweet_id = tweet_result&.dig("data", "id")
 
     if tweet_id.blank?
       error_log("Could retrieve_tweet_id for entry #{entry.id} from #{tweet_result.response}")
       return false
     end
 
+    entry.update!(tweet_id: (tweet_id || "could_not_find"))
+
     return true
+  rescue X::Error => e
+    error_log("Did not succesfully tweet entry #{entry.id}, #{e.class}: #{e.message}")
+    return false
   end
 
   def tweet_txt
