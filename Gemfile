@@ -32,7 +32,7 @@ gem 'terser', '~> 1.2'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'honeybadger', '~> 4.0'
+gem 'honeybadger', '~> 5.0'
 
 gem 'feedjira', '~> 3.0'
 gem 'slim-rails', '~> 3.0'

@@ -134,7 +134,7 @@ GEM
       railties (>= 3.2, < 8.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    honeybadger (4.12.2)
+    honeybadger (5.15.4)
     http (4.4.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -298,7 +298,7 @@ DEPENDENCIES
   byebug
   feedjira (~> 3.0)
   font-awesome-rails (~> 4.7)
-  honeybadger (~> 4.0)
+  honeybadger (~> 5.0)
   http (~> 4.0)
   listen (>= 3.0.5)
   momentjs-rails (~> 2.0)
