@@ -13,10 +13,10 @@ class EntryTweeter
     # I think it's thread-safe so we could be creating a global obj, but
     # for now one per EntryTweeter instance
     @client ||= X::Client.new(
-      api_key:         ENV['TWITTER_CONSUMER_KEY'],
-      api_key_secret:      ENV["TWITTER_CONSUMER_SECRET"],
-      access_token:         ENV["TWITTER_ACCESS_TOKEN"],
-      access_token_secret:  ENV["TWITTER_ACCESS_TOKEN_SECRET"]
+      api_key:         ENV['TWITTER_CONSUMER_KEY'] || ENV['X_API_KEY'],
+      api_key_secret:      ENV["TWITTER_CONSUMER_SECRET"] || ENV['X_API_KEY_SECRET'],
+      access_token:         ENV["TWITTER_ACCESS_TOKEN"] || ENV['X_ACCESS_TOKEN'],
+      access_token_secret:  ENV["TWITTER_ACCESS_TOKEN_SECRET"] || ENV['X_ACCESS_TOKEN_SECRET']
     )
   end
 
