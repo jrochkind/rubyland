@@ -162,7 +162,7 @@ GEM
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
-    puma (6.4.2)
+    puma (6.4.3)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.8)
@@ -271,7 +271,7 @@ DEPENDENCIES
   listen (>= 3.0.5)
   momentjs-rails (~> 2.0)
   pg (>= 0.18, < 2.0)
-  puma (~> 6.3)
+  puma (~> 6.4)
   rails (~> 7.0)
   sass-rails (~> 6.0)
   slim-rails (~> 3.0)
