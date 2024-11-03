@@ -48,7 +48,7 @@ class EntryTweeter
       return false
     end
 
-    tweet_result = client.post("tweet", { text: tweet_txt })
+    tweet_result = client.post("tweets", JSON.generate({ text: tweet_txt }))
 
     tweet_id = tweet_result&.dig("data", "id")
 
