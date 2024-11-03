@@ -20,9 +20,9 @@ class EntryTweeter
     )
   end
 
-  def credentials?
-    client.token_auth?
-  end
+  # def credentials?
+  #   client.token_auth?
+  # end
 
   # We go through some contortions to our best never to duplicate-tweet the same
   # entry.  Something going wrong and spamming the same content over and over
@@ -31,10 +31,10 @@ class EntryTweeter
   # We try to log lots of errors resulting no tweet made -- we do not currently ever
   # raise, so at present for instance HoneyBadger will not notice and alert. Should we?
   def update
-    unless credentials?
-      error_log("We don't seem to have credentails to tweet entry #{entry.id}")
-      return false
-    end
+    # unless credentials?
+    #   error_log("We don't seem to have credentails to tweet entry #{entry.id}")
+    #   return false
+    # end
 
     if entry.tweet_id.present?
       error_log("entry #{entry.id} may have already been tweeted, tweet_id=='#{entry.tweet_id}', not retweeting")
